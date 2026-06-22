@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e0e12"/>
+      <stop offset="100%" stop-color="#18181f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Fedora Hat -->
+  <g transform="translate(300,390)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <!-- Brim -->
+    <ellipse cx="0" cy="20" rx="130" ry="30" stroke-opacity="0.6"/>
+    <!-- Crown base -->
+    <path d="M-75,15 Q-80,-30 -70,-60 Q-50,-95 0,-105 Q50,-95 70,-60 Q80,-30 75,15"/>
+    <!-- Crown dent -->
+    <path d="M-40,-85 Q0,-100 40,-85" stroke-opacity="0.4"/>
+    <!-- Band -->
+    <path d="M-77,5 Q0,18 77,5" stroke-opacity="0.5"/>
+    <path d="M-76,12 Q0,25 76,12" stroke-opacity="0.5"/>
+    <!-- Band detail -->
+    <rect x="-12" y="2" width="24" height="14" rx="2" stroke-opacity="0.3"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

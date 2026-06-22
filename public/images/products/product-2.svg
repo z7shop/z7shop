@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#1c1c2a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Slim Fit T-Shirt (narrower body) -->
+  <g transform="translate(300,370)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M-80,-120 L-130,-90 L-100,-35 L-60,-52 L-55,125 L55,125 L60,-52 L100,-35 L130,-90 L80,-120 C60,-145 25,-155 0,-155 C-25,-155 -60,-145 -80,-120 Z"/>
+    <path d="M-18,-155 C-8,-137 8,-137 18,-155" stroke-opacity="0.5"/>
+    <!-- Slim fit lines -->
+    <path d="M-45,40 L-50,125" stroke-opacity="0.2" stroke-dasharray="6 4"/>
+    <path d="M45,40 L50,125" stroke-opacity="0.2" stroke-dasharray="6 4"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+  <g opacity="0.03" stroke="#C9A84C" stroke-width="0.5">
+    <line x1="0" y1="200" x2="600" y2="200"/><line x1="0" y1="400" x2="600" y2="400"/><line x1="0" y1="600" x2="600" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="800"/><line x1="400" y1="0" x2="400" y2="800"/>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1508"/>
+      <stop offset="100%" stop-color="#252010"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Polo T-Shirt -->
+  <g transform="translate(300,370)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M-85,-115 L-130,-88 L-105,-28 L-65,-45 L-68,125 L68,125 L65,-45 L105,-28 L130,-88 L85,-115 C65,-140 25,-150 0,-150 C-25,-150 -65,-140 -85,-115 Z"/>
+    <!-- Polo collar -->
+    <path d="M-35,-118 Q-30,-130 -15,-135 Q0,-138 15,-135 Q30,-130 35,-118" stroke-opacity="0.6"/>
+    <path d="M-30,-115 Q-25,-125 -12,-130 Q0,-133 12,-130 Q25,-125 30,-115" stroke-opacity="0.4"/>
+    <!-- Button placket -->
+    <path d="M0,-130 L0,-70" stroke-opacity="0.4"/>
+    <circle cx="0" cy="-115" r="3" stroke-opacity="0.4"/>
+    <circle cx="0" cy="-95" r="3" stroke-opacity="0.4"/>
+    <circle cx="0" cy="-75" r="3" stroke-opacity="0.4"/>
+    <!-- Sleeve hem -->
+    <path d="M-105,-32 L-65,-48" stroke-opacity="0.3"/>
+    <path d="M105,-32 L65,-48" stroke-opacity="0.3"/>
+  </g>
+  <!-- Premium crown icon -->
+  <g transform="translate(300,570)" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.2">
+    <path d="M-20,8 L-15,-8 L-5,2 L0,-12 L5,2 L15,-8 L20,8 Z"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

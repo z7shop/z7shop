@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a1f"/>
+      <stop offset="100%" stop-color="#24242d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Long Sleeve T-Shirt -->
+  <g transform="translate(300,370)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M-85,-120 L-130,-90 L-138,30 L-100,25 L-70,-40 L-70,125 L70,125 L70,-40 L100,25 L138,30 L130,-90 L85,-120 C65,-145 25,-155 0,-155 C-25,-155 -65,-145 -85,-120 Z"/>
+    <path d="M-18,-155 C-8,-138 8,-138 18,-155" stroke-opacity="0.5"/>
+    <!-- Cuff details -->
+    <path d="M-140,25 L-98,20" stroke-opacity="0.4"/>
+    <path d="M140,25 L98,20" stroke-opacity="0.4"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

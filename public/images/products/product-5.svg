@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e1a2b"/>
+      <stop offset="100%" stop-color="#162035"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#3b6cb5" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Jeans -->
+  <g transform="translate(300,380)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M-65,-150 L-75,-150 L-80,-130 L-85,0 L-100,160 L-40,160 L-8,20 L0,30 L8,20 L40,160 L100,160 L85,0 L80,-130 L75,-150 L65,-150"/>
+    <!-- Waistband -->
+    <path d="M-75,-150 L75,-150" stroke-opacity="0.6"/>
+    <path d="M-73,-140 L73,-140" stroke-opacity="0.3"/>
+    <!-- Fly -->
+    <path d="M0,-145 L0,-80" stroke-opacity="0.3"/>
+    <!-- Pockets -->
+    <path d="M-60,-135 L-35,-130 L-30,-100" stroke-opacity="0.3"/>
+    <path d="M60,-135 L35,-130 L30,-100" stroke-opacity="0.3"/>
+    <!-- Knee seams -->
+    <path d="M-72,60 L-52,55" stroke-opacity="0.15" stroke-dasharray="4 3"/>
+    <path d="M72,60 L52,55" stroke-opacity="0.15" stroke-dasharray="4 3"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

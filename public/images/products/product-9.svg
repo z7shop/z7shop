@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a0a"/>
+      <stop offset="100%" stop-color="#251515"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#8B0000" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Baseball Cap -->
+  <g transform="translate(300,380)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <!-- Brim -->
+    <path d="M-100,20 Q-110,50 -80,55 Q0,75 80,55 Q110,50 100,20"/>
+    <!-- Cap dome -->
+    <path d="M-100,20 Q-110,-40 -80,-80 Q-40,-115 0,-120 Q40,-115 80,-80 Q110,-40 100,20"/>
+    <!-- Panels -->
+    <path d="M0,-120 L0,20" stroke-opacity="0.3"/>
+    <path d="M-55,-100 L-55,25" stroke-opacity="0.15"/>
+    <path d="M55,-100 L55,25" stroke-opacity="0.15"/>
+    <!-- Button on top -->
+    <circle cx="0" cy="-120" r="5" stroke-opacity="0.5"/>
+    <!-- Band -->
+    <path d="M-100,10 Q0,30 100,10" stroke-opacity="0.3"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

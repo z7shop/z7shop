@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2010"/>
+      <stop offset="100%" stop-color="#222a18"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#4A6741" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Cargo Pants -->
+  <g transform="translate(300,380)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M-65,-150 L-75,-150 L-80,-130 L-88,0 L-95,160 L-35,160 L-8,20 L0,28 L8,20 L35,160 L95,160 L88,0 L80,-130 L75,-150 L65,-150"/>
+    <!-- Waistband -->
+    <path d="M-75,-150 L75,-150" stroke-opacity="0.6"/>
+    <path d="M-73,-142 L73,-142" stroke-opacity="0.3"/>
+    <!-- Cargo pockets -->
+    <rect x="-95" y="20" width="30" height="40" rx="3" stroke-opacity="0.4"/>
+    <path d="M-80,30 L-80,50" stroke-opacity="0.25"/>
+    <rect x="65" y="20" width="30" height="40" rx="3" stroke-opacity="0.4"/>
+    <path d="M80,30 L80,50" stroke-opacity="0.25"/>
+    <!-- Side pockets -->
+    <path d="M-60,-130 L-40,-125 L-35,-95" stroke-opacity="0.3"/>
+    <path d="M60,-130 L40,-125 L35,-95" stroke-opacity="0.3"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

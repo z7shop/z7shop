@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121218"/>
+      <stop offset="100%" stop-color="#1d1d28"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#E74C3C" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Sports Hoodie -->
+  <g transform="translate(300,370)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <!-- Body -->
+    <path d="M-85,-110 L-135,-80 L-140,30 L-100,25 L-75,-30 L-75,135 L75,135 L75,-30 L100,25 L140,30 L135,-80 L85,-110"/>
+    <!-- Hood -->
+    <path d="M-85,-110 Q-90,-140 -70,-165 Q-40,-190 0,-195 Q40,-190 70,-165 Q90,-140 85,-110"/>
+    <!-- Hood opening -->
+    <path d="M-40,-110 Q-30,-135 0,-140 Q30,-135 40,-110" stroke-opacity="0.5"/>
+    <!-- Drawstrings -->
+    <path d="M-15,-110 L-20,-85" stroke-opacity="0.4"/>
+    <path d="M15,-110 L20,-85" stroke-opacity="0.4"/>
+    <!-- Kangaroo pocket -->
+    <path d="M-50,50 Q0,65 50,50" stroke-opacity="0.4"/>
+    <path d="M-50,50 L-50,90 Q0,105 50,90 L50,50" stroke-opacity="0.3"/>
+    <!-- Cuffs -->
+    <path d="M-140,25 L-100,20" stroke-opacity="0.4"/>
+    <path d="M140,25 L100,20" stroke-opacity="0.4"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

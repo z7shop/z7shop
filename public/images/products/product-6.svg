@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1a14"/>
+      <stop offset="100%" stop-color="#2a2518"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#D4AC0D" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#glow)"/>
+  <!-- Chino Pants -->
+  <g transform="translate(300,380)" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M-60,-150 L-70,-150 L-75,-130 L-78,0 L-82,160 L-30,160 L-5,20 L0,25 L5,20 L30,160 L82,160 L78,0 L75,-130 L70,-150 L60,-150"/>
+    <!-- Waistband -->
+    <path d="M-70,-150 L70,-150" stroke-opacity="0.6"/>
+    <path d="M-68,-142 L68,-142" stroke-opacity="0.3"/>
+    <!-- Crease lines -->
+    <path d="M-55,-80 L-56,155" stroke-opacity="0.15" stroke-dasharray="8 4"/>
+    <path d="M55,-80 L56,155" stroke-opacity="0.15" stroke-dasharray="8 4"/>
+    <!-- Belt loops -->
+    <path d="M-45,-155 L-45,-142" stroke-opacity="0.4"/>
+    <path d="M0,-155 L0,-142" stroke-opacity="0.4"/>
+    <path d="M45,-155 L45,-142" stroke-opacity="0.4"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" fill="#C9A84C" font-family="Arial,sans-serif" font-size="14" font-weight="bold" opacity="0.3" letter-spacing="6">Z7SHOP</text>
+</svg>

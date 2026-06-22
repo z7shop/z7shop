@@ -1,0 +1,32 @@
+{
+  "name": "Z7shop - فروشگاه پوشاک مردانه",
+  "short_name": "Z7shop",
+  "description": "فروشگاه آنلاین پوشاک مردانه Z7shop - جدیدترین مدل‌ها با بهترین کیفیت",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#C9A84C",
+  "background_color": "#0a0a0d",
+  "categories": ["shopping", "fashion"],
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

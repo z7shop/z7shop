@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item *)",
+      "PowerShell(Start-Sleep -Seconds 2; Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing | Select-Object StatusCode)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/api/tickets\" -UseBasicParsing | Select-Object StatusCode)",
+      "PowerShell(Get-Process *)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing | Select-Object StatusCode)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/images/products/product-1.svg\" -UseBasicParsing | Select-Object StatusCode, @{N='Length';E={$_.Content.Length}})",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"https://images.unsplash.com/photo-1758267928064-f159a683385d?w=600&h=800&fit=crop&q=80\" -UseBasicParsing -Method Head; Write-Output \"Status: $\\($r.StatusCode\\), Type: $\\($r.Headers['Content-Type']\\)\" } catch { Write-Output \"FAILED: $_\" })",
+      "PowerShell($response = Invoke-WebRequest -Uri \"http://localhost:3000/api/products?featured=true&limit=1\" -UseBasicParsing; $json = $response.Content | ConvertFrom-Json; $json.products[0].images)",
+      "PowerShell(Start-Sleep -Seconds 5; Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing | Select-Object StatusCode)",
+      "PowerShell(Start-Sleep -Seconds 3; Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing | Select-Object StatusCode)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/robots.txt\" -UseBasicParsing | Select-Object -ExpandProperty Content)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/sitemap.xml\" -UseBasicParsing | Select-Object -ExpandProperty Content)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/manifest.json\" -UseBasicParsing | Select-Object StatusCode, @{N='Type';E={$_.Headers['Content-Type']}})",
+      "PowerShell(Stop-Process *)",
+      "PowerShell(cd \"C:\\\\Users\\\\Z7\\\\Desktop\\\\Z7shop\"; $r = Invoke-WebRequest -Uri \"http://localhost:3000/api/admin/stats\" -UseBasicParsing -ErrorAction SilentlyContinue; $r.StatusCode; $r.Content.Substring\\(0, [Math]::Min\\(500, $r.Content.Length\\)\\))",
+      "PowerShell($session = Invoke-WebRequest -Uri \"http://localhost:3000/api/auth/csrf\" -UseBasicParsing -SessionVariable ws; $csrf = \\($session.Content | ConvertFrom-Json\\).csrfToken; $login = Invoke-WebRequest -Uri \"http://localhost:3000/api/auth/callback/credentials\" -Method POST -Body \"csrfToken=$csrf&email=admin@z7shop.ir&password=admin123\" -ContentType \"application/x-www-form-urlencoded\" -WebSession $ws -UseBasicParsing -MaximumRedirection 0 -ErrorAction SilentlyContinue; $login.StatusCode; $check = Invoke-WebRequest -Uri \"http://localhost:3000/api/auth/session\" -WebSession $ws -UseBasicParsing; $check.Content)",
+      "PowerShell($stats = Invoke-WebRequest -Uri \"http://localhost:3000/api/admin/stats\" -WebSession $ws -UseBasicParsing; $stats.StatusCode)",
+      "PowerShell(ls *)",
+      "PowerShell(try { $r = Invoke-WebRequest \"http://localhost:3000\" -UseBasicParsing -TimeoutSec 10; \"Site OK: $\\($r.StatusCode\\)\" } catch { \"Site FAIL\" })",
+      "PowerShell(Start-Sleep -Seconds 5; Invoke-WebRequest -Uri http://localhost:3000 -UseBasicParsing | Select-Object StatusCode)",
+      "PowerShell(cd C:\\\\Users\\\\Z7\\\\Desktop\\\\Z7shop; try { $r = Invoke-WebRequest -Uri http://localhost:3000 -UseBasicParsing -TimeoutSec 5; \"Status: $\\($r.StatusCode\\)\" } catch { \"Error: $_\" })",
+      "PowerShell($r = Invoke-WebRequest -Uri http://localhost:3000 -UseBasicParsing -TimeoutSec 10; $r.Content.Substring\\(0, [Math]::Min\\(3000, $r.Content.Length\\)\\))",
+      "PowerShell(Start-Sleep -Seconds 8; try { $r = Invoke-WebRequest -Uri http://localhost:3000/api/categories -UseBasicParsing -TimeoutSec 10; $r.Content } catch { \"Error: $_\" })",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3000/api/products?limit=50\" -UseBasicParsing -TimeoutSec 10; \\($r.Content | ConvertFrom-Json\\).products | Where-Object { $_.category_id -eq 'cat-shoes' } | Select-Object name_en, price, stock | Format-Table)",
+      "PowerShell(winget list *)",
+      "PowerShell(winget install *)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" init)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" config user.email \"frankyvack@gmail.com\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" config user.name \"Z7\")"
+    ]
+  }
+}
