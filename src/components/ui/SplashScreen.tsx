@@ -34,40 +34,28 @@ export default function SplashScreen() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] splash-ambient" />
 
       <div className="relative z-10 flex flex-col items-center">
-        {/* Diamond frame */}
-        <div className="absolute w-36 h-36 md:w-44 md:h-44 splash-diamond">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <rect x="30" y="30" width="140" height="140" rx="8"
-              fill="none" stroke="url(#goldGrad)" strokeWidth="1"
-              transform="rotate(45 100 100)"
-              className="splash-diamond-path" />
+        {/* Outer rings */}
+        <div className="absolute w-56 h-56 md:w-72 md:h-72 splash-rings">
+          <svg viewBox="0 0 300 300" className="w-full h-full">
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#E8D5A3" stopOpacity="1" />
-                <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.6" />
+                <stop offset="50%" stopColor="#E8D5A3" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.6" />
               </linearGradient>
             </defs>
+            <circle cx="150" cy="150" r="140" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5" className="splash-circle-outer" />
+            <circle cx="150" cy="150" r="110" fill="none" stroke="#C9A84C" strokeWidth="0.3" strokeDasharray="4 8" className="splash-circle-dashed" />
+            <circle cx="150" cy="150" r="80" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5" className="splash-circle-inner" />
           </svg>
         </div>
 
-        {/* Corner accents */}
-        <div className="absolute -top-6 -left-6 w-4 h-4 splash-corner splash-corner-1">
-          <div className="w-full h-[1px] bg-gradient-to-r from-gold to-transparent" />
-          <div className="h-full w-[1px] bg-gradient-to-b from-gold to-transparent" />
-        </div>
-        <div className="absolute -top-6 -right-6 w-4 h-4 splash-corner splash-corner-2">
-          <div className="w-full h-[1px] bg-gradient-to-l from-gold to-transparent" />
-          <div className="h-full w-[1px] bg-gradient-to-b from-gold to-transparent ml-auto" />
-        </div>
-        <div className="absolute -bottom-6 -left-6 w-4 h-4 splash-corner splash-corner-3">
-          <div className="h-full w-[1px] bg-gradient-to-t from-gold to-transparent" />
-          <div className="w-full h-[1px] bg-gradient-to-r from-gold to-transparent mt-auto" />
-        </div>
-        <div className="absolute -bottom-6 -right-6 w-4 h-4 splash-corner splash-corner-4">
-          <div className="h-full w-[1px] bg-gradient-to-t from-gold to-transparent ml-auto" />
-          <div className="w-full h-[1px] bg-gradient-to-l from-gold to-transparent mt-auto" />
-        </div>
+        {/* Orbiting dots */}
+        {[0, 1, 2, 3].map(i => (
+          <div key={i} className="absolute w-56 h-56 md:w-72 md:h-72 splash-orbit" style={{ animationDelay: `${i * 0.5}s` }}>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gold splash-dot" style={{ animationDelay: `${0.8 + i * 0.15}s` }} />
+          </div>
+        ))}
 
         {/* Z7 Logo */}
         <div className="splash-logo-reveal">
@@ -118,18 +106,22 @@ export default function SplashScreen() {
           0% { opacity: 0; letter-spacing: 1em; }
           100% { opacity: 1; letter-spacing: 0.5em; }
         }
-        @keyframes diamondDraw {
-          0% { stroke-dashoffset: 800; opacity: 0; }
-          20% { opacity: 1; }
+        @keyframes circleReveal {
+          0% { stroke-dashoffset: 900; opacity: 0; }
+          15% { opacity: 1; }
           100% { stroke-dashoffset: 0; opacity: 1; }
         }
-        @keyframes diamondRotate {
+        @keyframes ringsRotate {
           0% { transform: rotate(0deg); }
-          100% { transform: rotate(90deg); }
+          100% { transform: rotate(360deg); }
         }
-        @keyframes cornerIn {
-          0% { opacity: 0; transform: scale(0); }
-          100% { opacity: 1; transform: scale(1); }
+        @keyframes orbitSpin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes dotFadeIn {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+          100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
         @keyframes loaderSlide {
           0% { transform: translateX(-100%); }
@@ -176,19 +168,30 @@ export default function SplashScreen() {
           animation: subtitleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
           opacity: 0;
         }
-        .splash-diamond {
-          animation: diamondRotate 20s linear infinite;
+        .splash-rings {
+          animation: ringsRotate 30s linear infinite;
         }
-        .splash-diamond-path {
-          stroke-dasharray: 800;
-          stroke-dashoffset: 800;
-          animation: diamondDraw 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        .splash-circle-outer {
+          stroke-dasharray: 900;
+          stroke-dashoffset: 900;
+          animation: circleReveal 2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
         }
-        .splash-corner { opacity: 0; }
-        .splash-corner-1 { animation: cornerIn 0.4s ease-out 0.6s forwards; }
-        .splash-corner-2 { animation: cornerIn 0.4s ease-out 0.7s forwards; }
-        .splash-corner-3 { animation: cornerIn 0.4s ease-out 0.8s forwards; }
-        .splash-corner-4 { animation: cornerIn 0.4s ease-out 0.9s forwards; }
+        .splash-circle-dashed {
+          opacity: 0;
+          animation: ambient 1.5s ease-out 0.6s forwards;
+        }
+        .splash-circle-inner {
+          stroke-dasharray: 520;
+          stroke-dashoffset: 520;
+          animation: circleReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+        }
+        .splash-orbit {
+          animation: orbitSpin 8s linear infinite;
+        }
+        .splash-dot {
+          opacity: 0;
+          animation: dotFadeIn 0.4s ease-out forwards;
+        }
         .splash-loader-wrap {
           animation: loaderWrapIn 0.6s ease-out 1.5s forwards;
           width: 0;

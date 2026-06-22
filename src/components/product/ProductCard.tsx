@@ -4,7 +4,7 @@ import { useLocale } from '@/hooks/useLocale';
 import { useStore } from '@/store/useStore';
 import { formatPrice, formatPercent, toPersianNumber } from '@/i18n';
 import type { Product } from '@/types';
-import { HiOutlineHeart, HiHeart, HiOutlineEye, HiOutlineShoppingCart } from 'react-icons/hi';
+import { HiOutlineHeart, HiHeart, HiOutlineEye, HiOutlineShoppingCart, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
@@ -16,7 +16,8 @@ interface Props {
 export default function ProductCard({ product }: Props) {
   const { locale, dict } = useLocale();
   const { data: session } = useSession();
-  const { setQuickView, setCartCount } = useStore();
+  const { setQuickView, setCartCount, addCompare, compareIds, removeCompare } = useStore();
+  const isCompared = compareIds.includes(product.id);
   const [liked, setLiked] = useState(false);
 
   const name = locale === 'fa' ? product.name_fa : product.name_en;
@@ -113,6 +114,18 @@ export default function ProductCard({ product }: Props) {
               title={dict.product.addToWishlist}
             >
               {liked ? <HiHeart className="w-5 h-5 text-red-500" /> : <HiOutlineHeart className="w-5 h-5" />}
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (isCompared) removeCompare(product.id);
+                else addCompare(product.id);
+              }}
+              className={`w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 transform translate-y-4 group-hover:translate-y-0 delay-150 ${isCompared ? 'bg-gold text-white' : 'bg-white/90 dark:bg-gray-800/90 hover:bg-gold hover:text-white'}`}
+              title={locale === 'fa' ? 'مقایسه' : 'Compare'}
+            >
+              <HiOutlineSwitchHorizontal className="w-5 h-5" />
             </button>
           </div>
         </div>
