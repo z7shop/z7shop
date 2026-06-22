@@ -81,6 +81,21 @@ const faqData: FaqCategory[] = [
   },
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqData.flatMap(cat =>
+    cat.items.map(item => ({
+      '@type': 'Question',
+      name: item.q_fa,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a_fa,
+      },
+    }))
+  ),
+};
+
 export default function FaqPage() {
   const { locale } = useLocale();
   const fa = locale === 'fa';
@@ -114,6 +129,10 @@ export default function FaqPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Header />
       <main>
         {/* Hero */}
