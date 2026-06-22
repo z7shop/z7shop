@@ -47,7 +47,9 @@
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Fix splash: center logo inside rings\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)",
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Splash: smaller logo + just SHOP text inside rings\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)",
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Fix splash: hide site content until splash finishes\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)",
-      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Fix splash visibility - just set dark bg, let z-index handle rest\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)"
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Fix splash visibility - just set dark bg, let z-index handle rest\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" status --short)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"test permissions\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)"
     ]
   }
 }

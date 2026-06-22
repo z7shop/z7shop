@@ -8,7 +8,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Z7shop | فروشگاه پوشاک مردانه",
+  title: "Z7shop | فروشگاه آنلاین پوشاک مردانه",
   description: "فروشگاه آنلاین پوشاک مردانه Z7shop - جدیدترین مدل‌ها با بهترین کیفیت | Z7shop - Premium Men's Fashion Store",
   keywords: ["پوشاک مردانه", "فروشگاه آنلاین", "تی‌شرت", "شلوار", "مد مردانه", "Z7shop"],
   manifest: "/manifest.json",
