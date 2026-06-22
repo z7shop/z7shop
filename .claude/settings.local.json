@@ -30,7 +30,14 @@
       "PowerShell(winget list *)",
       "PowerShell(winget install *)",
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" init)",
-      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" config user.email \"frankyvack@gmail.com\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" config user.name \"Z7\")"
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" config user.email \"frankyvack@gmail.com\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" config user.name \"Z7\")",
+      "PowerShell(gh *)",
+      "PowerShell(try { Get-ChildItem -Path \"C:\\\\Program Files \\(x86\\)\" -Filter \"gh.exe\" -Recurse -ErrorAction Stop | Select-Object -ExpandProperty FullName } catch {}; try { Get-ChildItem -Path \"$env:LOCALAPPDATA\\\\GitHub CLI\" -Filter \"gh.exe\" -Recurse -ErrorAction Stop | Select-Object -ExpandProperty FullName } catch {}; try { Get-ChildItem -Path \"$env:LOCALAPPDATA\\\\Programs\" -Filter \"gh.exe\" -Recurse -ErrorAction Stop | Select-Object -ExpandProperty FullName } catch {})",
+      "PowerShell([System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) -split \";\" | Where-Object { $_ -match \"github|gh\" })",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" remote add origin https://github.com/z7shop/z7shop.git)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" branch -M main)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push -u origin main)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A)"
     ]
   }
 }
