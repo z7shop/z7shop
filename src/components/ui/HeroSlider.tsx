@@ -32,6 +32,7 @@ export default function HeroSlider() {
   const [active, setActive] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [slides, setSlides] = useState<Slide[]>([]);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   useEffect(() => {
     fetch('/api/banners').then(r => r.json()).then(data => {
@@ -117,7 +118,18 @@ export default function HeroSlider() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-8 md:py-0 relative z-10 w-full">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-8 md:py-0 relative z-10 w-full"
+        onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+        onTouchEnd={(e) => {
+          if (touchStart === null) return;
+          const diff = touchStart - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) next();
+            else prev();
+          }
+          setTouchStart(null);
+        }}>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Text */}
           <div className="text-center md:text-start">
@@ -209,9 +221,9 @@ export default function HeroSlider() {
         </div>
       </div>
 
-      {/* Slide navigation */}
-      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
-        <button onClick={prev} className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 hover:border-gold/40 flex items-center justify-center text-gray-500 hover:text-gold transition-all duration-300 backdrop-blur-sm bg-black/20">
+      {/* Slide navigation - desktop only */}
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-4">
+        <button onClick={prev} className="w-10 h-10 rounded-full border border-white/10 hover:border-gold/40 flex items-center justify-center text-gray-500 hover:text-gold transition-all duration-300 backdrop-blur-sm bg-black/20">
           <HiOutlineChevronRight className="w-4 h-4 rtl:hidden" />
           <HiOutlineChevronLeft className="w-4 h-4 hidden rtl:block" />
         </button>
@@ -229,10 +241,20 @@ export default function HeroSlider() {
             </button>
           ))}
         </div>
-        <button onClick={next} className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 hover:border-gold/40 flex items-center justify-center text-gray-500 hover:text-gold transition-all duration-300 backdrop-blur-sm bg-black/20">
+        <button onClick={next} className="w-10 h-10 rounded-full border border-white/10 hover:border-gold/40 flex items-center justify-center text-gray-500 hover:text-gold transition-all duration-300 backdrop-blur-sm bg-black/20">
           <HiOutlineChevronLeft className="w-4 h-4 rtl:hidden" />
           <HiOutlineChevronRight className="w-4 h-4 hidden rtl:block" />
         </button>
+      </div>
+
+      {/* Mobile dots - simple, no progress */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex md:hidden items-center gap-2">
+        {slides.map((_, i) => (
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-500 ${i === active ? 'w-6 bg-gold' : 'w-1.5 bg-white/20'}`}
+          />
+        ))}
       </div>
 
       {/* Bottom fade */}
