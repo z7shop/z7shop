@@ -43,7 +43,8 @@
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Copy static assets to standalone dir\")",
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Mobile hero: swipe only, hide nav buttons and progress bar\")",
       "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Premium splash screen redesign\")",
-      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" status --short)"
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" status --short)",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" add -A; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" commit -m \"Fix splash: center logo inside rings\"; & \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\" push)"
     ]
   }
 }

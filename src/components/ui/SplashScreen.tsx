@@ -34,48 +34,50 @@ export default function SplashScreen() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] splash-ambient" />
 
       <div className="relative z-10 flex flex-col items-center">
-        {/* Outer rings */}
-        <div className="absolute w-56 h-56 md:w-72 md:h-72 splash-rings">
-          <svg viewBox="0 0 300 300" className="w-full h-full">
-            <defs>
-              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.6" />
-                <stop offset="50%" stopColor="#E8D5A3" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.6" />
-              </linearGradient>
-            </defs>
-            <circle cx="150" cy="150" r="140" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5" className="splash-circle-outer" />
-            <circle cx="150" cy="150" r="110" fill="none" stroke="#C9A84C" strokeWidth="0.3" strokeDasharray="4 8" className="splash-circle-dashed" />
-            <circle cx="150" cy="150" r="80" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5" className="splash-circle-inner" />
-          </svg>
-        </div>
+        {/* Ring container - centered on logo */}
+        <div className="relative w-56 h-56 md:w-72 md:h-72 flex items-center justify-center">
 
-        {/* Orbiting dots */}
-        {[0, 1, 2, 3].map(i => (
-          <div key={i} className="absolute w-56 h-56 md:w-72 md:h-72 splash-orbit" style={{ animationDelay: `${i * 0.5}s` }}>
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gold splash-dot" style={{ animationDelay: `${0.8 + i * 0.15}s` }} />
+          {/* Outer rings */}
+          <div className="absolute inset-0 splash-rings">
+            <svg viewBox="0 0 300 300" className="w-full h-full">
+              <defs>
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#C9A84C" stopOpacity="0.6" />
+                  <stop offset="50%" stopColor="#E8D5A3" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.6" />
+                </linearGradient>
+              </defs>
+              <circle cx="150" cy="150" r="140" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5" className="splash-circle-outer" />
+              <circle cx="150" cy="150" r="110" fill="none" stroke="#C9A84C" strokeWidth="0.3" strokeDasharray="4 8" className="splash-circle-dashed" />
+              <circle cx="150" cy="150" r="80" fill="none" stroke="url(#goldGrad)" strokeWidth="0.5" className="splash-circle-inner" />
+            </svg>
           </div>
-        ))}
 
-        {/* Z7 Logo */}
-        <div className="splash-logo-reveal">
-          <span className="text-7xl md:text-8xl font-black tracking-tighter splash-text-shimmer">
-            Z7
-          </span>
+          {/* Orbiting dots */}
+          {[0, 1, 2, 3].map(i => (
+            <div key={i} className="absolute inset-0 splash-orbit" style={{ animationDelay: `${i * 0.5}s` }}>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gold splash-dot" style={{ animationDelay: `${0.8 + i * 0.15}s` }} />
+            </div>
+          ))}
+
+          {/* Z7 Logo + text - centered inside rings */}
+          <div className="relative flex flex-col items-center">
+            <div className="splash-logo-reveal">
+              <span className="text-6xl md:text-7xl font-black tracking-tighter splash-text-shimmer">
+                Z7
+              </span>
+            </div>
+            <div className="splash-divider mt-3 mb-2" />
+            <div className="splash-subtitle">
+              <span className="text-[10px] md:text-[11px] tracking-[0.5em] uppercase font-light text-gold/70">
+                premium store
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Divider line */}
-        <div className="splash-divider mt-4 mb-3" />
-
-        {/* SHOP text */}
-        <div className="splash-subtitle">
-          <span className="text-[11px] md:text-xs tracking-[0.5em] uppercase font-light text-gold/70">
-            premium store
-          </span>
-        </div>
-
-        {/* Loading bar */}
-        <div className="mt-10 w-32 h-[2px] bg-white/5 rounded-full overflow-hidden splash-loader-wrap">
+        {/* Loading bar - below rings */}
+        <div className="mt-8 w-32 h-[2px] bg-white/5 rounded-full overflow-hidden splash-loader-wrap">
           <div className="h-full bg-gradient-to-r from-gold/0 via-gold to-gold/0 rounded-full splash-loader" />
         </div>
       </div>
