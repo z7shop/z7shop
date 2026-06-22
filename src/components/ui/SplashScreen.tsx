@@ -60,17 +60,17 @@ export default function SplashScreen() {
             </div>
           ))}
 
-          {/* Z7 Logo + text - centered inside rings */}
+          {/* Z7 Logo + SHOP - centered inside rings */}
           <div className="relative flex flex-col items-center">
             <div className="splash-logo-reveal">
-              <span className="text-6xl md:text-7xl font-black tracking-tighter splash-text-shimmer">
+              <span className="text-5xl md:text-6xl font-black tracking-tighter splash-text-shimmer">
                 Z7
               </span>
             </div>
-            <div className="splash-divider mt-3 mb-2" />
+            <div className="splash-divider mt-2 mb-1.5" />
             <div className="splash-subtitle">
-              <span className="text-[10px] md:text-[11px] tracking-[0.5em] uppercase font-light text-gold/70">
-                premium store
+              <span className="text-[10px] tracking-[0.4em] uppercase font-light text-gold/60">
+                shop
               </span>
             </div>
           </div>
