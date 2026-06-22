@@ -14,6 +14,7 @@ export default function SplashScreen() {
       const t2 = setTimeout(() => {
         setShow(false);
         document.body.style.overflow = '';
+        document.documentElement.classList.remove('splash-active');
         sessionStorage.setItem('z7-splash', '1');
       }, 3400);
       return () => { clearTimeout(t1); clearTimeout(t2); document.body.style.overflow = ''; };
@@ -23,7 +24,7 @@ export default function SplashScreen() {
   if (!show) return null;
 
   return (
-    <div className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-700 ${fadeOut ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}
+    <div data-splash className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-700 ${fadeOut ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}
       style={{ transitionProperty: 'opacity, transform' }}>
 
       {/* Background */}

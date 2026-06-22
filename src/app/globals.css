@@ -4,6 +4,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
 
+html.splash-active body > * > *:not([data-splash]) {
+  visibility: hidden !important;
+}
+html.splash-active {
+  background: #060608;
+}
+
 @layer base {
   * {
     @apply box-border;

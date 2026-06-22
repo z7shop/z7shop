@@ -26,6 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          if (!sessionStorage.getItem('z7-splash')) {
+            document.documentElement.classList.add('splash-active');
+          }
+        `}} />
+      </head>
       <body className="min-h-screen">
         <Providers>
           {children}
