@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import { useLocale } from '@/hooks/useLocale';
 import Link from 'next/link';
+import Image from 'next/image';
 import { HiOutlineChatAlt2, HiOutlineX, HiOutlinePaperAirplane, HiOutlineUser, HiOutlinePhotograph, HiOutlineClock } from 'react-icons/hi';
 
 const FAQ = [
@@ -315,7 +316,7 @@ export default function SupportButton() {
                                 m.sender === 'admin' ? 'bg-blue-500/10 text-blue-200 rounded-bl-sm' :
                                 'bg-white/[0.05] text-gray-400 rounded-bl-sm'
                               }`}>
-                                {m.image && <img src={m.image} alt="" className="max-w-full rounded-lg mb-1 max-h-24 object-cover" />}
+                                {m.image && <Image src={m.image} alt="" width={200} height={96} className="max-w-full rounded-lg mb-1 max-h-24 object-cover" />}
                                 {m.message && <span>{m.message}</span>}
                               </div>
                             )}
@@ -348,7 +349,7 @@ export default function SupportButton() {
                             <p className="text-[10px] text-blue-400 font-medium mb-1">{locale === 'fa' ? 'پشتیبان' : 'Support'}</p>
                           )}
                           {msg.image && (
-                            <img src={msg.image} alt="" className="max-w-full rounded-lg mb-1.5 max-h-40 object-cover cursor-pointer" onClick={() => window.open(msg.image, '_blank')} />
+                            <Image src={msg.image} alt="" width={250} height={160} className="max-w-full rounded-lg mb-1.5 max-h-40 object-cover cursor-pointer" onClick={() => window.open(msg.image, '_blank')} />
                           )}
                           {msg.message && <span>{msg.message}</span>}
                         </div>

@@ -13,9 +13,18 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [captchaA] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaB] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaAnswer, setCaptchaAnswer] = useState('');
+  const [captchaError, setCaptchaError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (parseInt(captchaAnswer) !== captchaA + captchaB) {
+      setCaptchaError(locale === 'fa' ? 'پاسخ امنیتی اشتباه است' : 'Wrong security answer');
+      return;
+    }
+    setCaptchaError('');
     setLoading(true);
 
     const result = await signIn('credentials', {
@@ -67,13 +76,29 @@ export default function LoginPage() {
             </div>
           </div>
 
+          <div>
+            <label className="text-sm font-medium mb-1 block">{locale === 'fa' ? 'سوال امنیتی' : 'Security Question'}</label>
+            <div className="flex items-center gap-3">
+              <span className="text-gold font-bold font-mono text-lg" dir="ltr">{captchaA} + {captchaB} = ?</span>
+              <input
+                type="text"
+                value={captchaAnswer}
+                onChange={(e) => { setCaptchaAnswer(e.target.value.replace(/\D/g, '')); setCaptchaError(''); }}
+                className={`input-field w-20 text-center font-mono ${captchaError ? 'border-red-500' : ''}`}
+                dir="ltr"
+                maxLength={2}
+              />
+            </div>
+            {captchaError && <p className="text-red-400 text-xs mt-1">{captchaError}</p>}
+          </div>
+
           <button type="submit" disabled={loading} className="btn-gold w-full py-3 disabled:opacity-50">
             {loading ? dict.common.loading : dict.auth.loginButton}
           </button>
 
           <div className="flex items-center gap-3 my-4">
             <div className="flex-1 h-px bg-gray-700" />
-            <span className="text-gray-500 text-sm">{(dict as any).googleLogin.orContinueWith}</span>
+            <span className="text-gray-500 text-sm">{(dict.googleLogin as Record<string, string>)?.orContinueWith}</span>
             <div className="flex-1 h-px bg-gray-700" />
           </div>
 
@@ -88,7 +113,7 @@ export default function LoginPage() {
               <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
             </svg>
-            {(dict as any).googleLogin.signInWithGoogle}
+            {(dict.googleLogin as Record<string, string>)?.signInWithGoogle}
           </button>
 
           <div className="flex items-center justify-between text-sm text-gray-500 mt-4">

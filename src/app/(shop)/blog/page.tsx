@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { useLocale } from '@/hooks/useLocale';
 import { formatDate, toPersianNumber } from '@/i18n';
 import type { BlogPost } from '@/types';
+import Image from 'next/image';
 import { HiOutlineEye, HiOutlineClock } from 'react-icons/hi';
 
 export default function BlogPage() {
@@ -102,7 +103,7 @@ export default function BlogPage() {
                   <Link key={post.id} href={`/blog/${post.slug}`} className="card-hover group overflow-hidden">
                     <div className="aspect-[2/1] overflow-hidden">
                       {post.cover_image ? (
-                        <img src={post.cover_image} alt={title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <Image src={post.cover_image} alt={title} width={600} height={300} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center">
                           <span className="text-4xl opacity-30">📝</span>

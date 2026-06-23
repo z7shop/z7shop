@@ -44,7 +44,13 @@ export default function PushNotificationPrompt() {
       const { publicKey } = await res.json();
       if (!publicKey) { setShow(false); return; }
 
-      const registration = await navigator.serviceWorker.ready;
+      const reg = await navigator.serviceWorker.register('/sw.js');
+      const registration = await Promise.race([
+        navigator.serviceWorker.ready,
+        new Promise<ServiceWorkerRegistration>((_, reject) =>
+          setTimeout(() => reject(new Error('SW timeout')), 5000)
+        ),
+      ]) || reg;
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(publicKey),

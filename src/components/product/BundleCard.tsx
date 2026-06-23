@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useLocale } from '@/hooks/useLocale';
 import { useStore } from '@/store/useStore';
@@ -70,11 +71,12 @@ export default function BundleCard({ bundle }: { bundle: BundleWithProducts }) {
           return (
             <Link key={product.id} href={`/products/${product.id}`} className="relative aspect-square rounded-xl overflow-hidden bg-gray-800">
               {imgs[0] && (
-                <img
+                <Image
                   src={imgs[0]}
                   alt={locale === 'fa' ? product.name_fa : product.name_en}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 768px) 40vw, 20vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

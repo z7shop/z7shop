@@ -15,7 +15,7 @@ const config: Config = {
         'gold-dark': '#A88B3A',
       },
       fontFamily: {
-        vazir: ['Vazirmatn', 'system-ui', 'sans-serif'],
+        vazir: ['var(--font-vazirmatn)', 'Vazirmatn', 'system-ui', 'sans-serif'],
       },
     },
   },

@@ -76,5 +76,5 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  secret: process.env.NEXTAUTH_SECRET || 'z7shop-default-secret-change-in-production',
+  secret: process.env.NEXTAUTH_SECRET,
 };

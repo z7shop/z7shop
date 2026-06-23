@@ -4,6 +4,7 @@ import AdminLayout from '@/components/layout/AdminLayout';
 import { useLocale } from '@/hooks/useLocale';
 import { formatPrice } from '@/i18n';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 import { HiOutlinePlus, HiOutlineTrash, HiOutlinePencil, HiOutlineX, HiOutlineCheck } from 'react-icons/hi';
 
 interface Product {
@@ -197,7 +198,7 @@ export default function AdminBundlesPage() {
                     onClick={() => toggleProduct(p.id)}
                     className={`flex items-center gap-2 p-2 rounded-lg text-start text-xs transition-all ${selected ? 'bg-gold/20 border border-gold/50' : 'bg-gray-800/30 border border-gray-700/30 hover:border-gold/30'}`}
                   >
-                    {imgs[0] && <img src={imgs[0]} alt="" className="w-8 h-8 rounded object-cover flex-shrink-0" />}
+                    {imgs[0] && <Image src={imgs[0]} alt="" width={32} height={32} className="w-8 h-8 rounded object-cover flex-shrink-0" />}
                     <span className="truncate">{locale === 'fa' ? p.name_fa : p.name_en}</span>
                     {selected && <HiOutlineCheck className="w-3 h-3 text-gold flex-shrink-0 ms-auto" />}
                   </button>
@@ -245,7 +246,7 @@ export default function AdminBundlesPage() {
                       <div className="flex -space-x-2 rtl:space-x-reverse">
                         {b.products.slice(0, 3).map(p => {
                           const imgs: string[] = (() => { try { return JSON.parse(p.images || '[]'); } catch { return []; } })();
-                          return <img key={p.id} src={imgs[0] || ''} alt="" className="w-8 h-8 rounded-full border-2 border-gray-800 object-cover" />;
+                          return <Image key={p.id} src={imgs[0] || '/images/placeholder.svg'} alt="" width={32} height={32} className="w-8 h-8 rounded-full border-2 border-gray-800 object-cover" />;
                         })}
                         {b.products.length > 3 && (
                           <span className="w-8 h-8 rounded-full border-2 border-gray-800 bg-gray-700 flex items-center justify-center text-xs">+{b.products.length - 3}</span>

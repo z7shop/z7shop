@@ -17,6 +17,10 @@ export default function RegisterPage() {
   const [step, setStep] = useState<'form' | 'verify'>('form');
   const [code, setCode] = useState('');
   const [countdown, setCountdown] = useState(0);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [captchaA] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaB] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaAnswer, setCaptchaAnswer] = useState('');
 
   const startCountdown = () => {
     setCountdown(60);
@@ -45,6 +49,12 @@ export default function RegisterPage() {
     }
     if (form.password !== form.confirmPassword) {
       errs.confirmPassword = locale === 'fa' ? 'رمز عبور مطابقت ندارد' : 'Passwords do not match';
+    }
+    if (!acceptTerms) {
+      errs.terms = locale === 'fa' ? 'پذیرش شرایط الزامی است' : 'You must accept the terms';
+    }
+    if (parseInt(captchaAnswer) !== captchaA + captchaB) {
+      errs.captcha = locale === 'fa' ? 'پاسخ امنیتی اشتباه است' : 'Wrong security answer';
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -164,7 +174,7 @@ export default function RegisterPage() {
                   <input
                     id={`register-${f.key}`}
                     type={f.type}
-                    value={(form as any)[f.key]}
+                    value={form[f.key as keyof typeof form]}
                     onChange={(e) => { setForm({ ...form, [f.key]: e.target.value }); setErrors(prev => ({ ...prev, [f.key]: '' })); }}
                     className={`input-field ps-10 ${errors[f.key] ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
                     dir={f.dir}
@@ -178,13 +188,48 @@ export default function RegisterPage() {
               </div>
             ))}
 
+            <div className="flex items-center gap-2">
+              <label className="text-sm text-gray-400 flex items-start gap-2 select-none cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={acceptTerms}
+                  onChange={(e) => { setAcceptTerms(e.target.checked); setErrors(prev => ({ ...prev, terms: '' })); }}
+                  className="mt-1 accent-gold w-4 h-4 rounded"
+                />
+                <span>
+                  {locale === 'fa' ? (
+                    <><Link href="/terms" className="text-gold hover:underline" target="_blank">شرایط و قوانین</Link> سایت را می‌پذیرم</>
+                  ) : (
+                    <>I accept the <Link href="/terms" className="text-gold hover:underline" target="_blank">Terms & Conditions</Link></>
+                  )}
+                </span>
+              </label>
+            </div>
+            {errors.terms && <p className="text-red-400 text-xs">{errors.terms}</p>}
+
+            <div>
+              <label className="text-sm font-medium mb-1 block">{locale === 'fa' ? 'سوال امنیتی' : 'Security Question'}</label>
+              <div className="flex items-center gap-3">
+                <span className="text-gold font-bold font-mono text-lg" dir="ltr">{captchaA} + {captchaB} = ?</span>
+                <input
+                  type="text"
+                  value={captchaAnswer}
+                  onChange={(e) => { setCaptchaAnswer(e.target.value.replace(/\D/g, '')); setErrors(prev => ({ ...prev, captcha: '' })); }}
+                  className={`input-field w-20 text-center font-mono ${errors.captcha ? 'border-red-500' : ''}`}
+                  dir="ltr"
+                  maxLength={2}
+                />
+              </div>
+              {errors.captcha && <p className="text-red-400 text-xs mt-1">{errors.captcha}</p>}
+            </div>
+
             <button type="submit" disabled={loading} className="btn-gold w-full py-3 disabled:opacity-50">
               {loading ? dict.common.loading : (locale === 'fa' ? 'ارسال کد تأیید' : 'Send Verification Code')}
             </button>
 
             <div className="flex items-center gap-3 my-4">
               <div className="flex-1 h-px bg-gray-700" />
-              <span className="text-gray-500 text-sm">{(dict as any).googleLogin.orContinueWith}</span>
+              <span className="text-gray-500 text-sm">{(dict.googleLogin as Record<string, string>)?.orContinueWith}</span>
               <div className="flex-1 h-px bg-gray-700" />
             </div>
 
@@ -199,7 +244,7 @@ export default function RegisterPage() {
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
-              {(dict as any).googleLogin.signUpWithGoogle}
+              {(dict.googleLogin as Record<string, string>)?.signUpWithGoogle}
             </button>
 
             <div className="text-center text-sm text-gray-500 mt-4">

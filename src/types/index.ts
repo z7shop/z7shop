@@ -222,6 +222,24 @@ export interface PushSubscription {
   created_at: string;
 }
 
+export interface Review {
+  id: string;
+  user_id: string;
+  product_id: string;
+  rating: number;
+  title: string;
+  comment: string;
+  user_name?: string;
+  created_at: string;
+}
+
+export interface CouponCheckResult {
+  valid: boolean;
+  discount_percent?: number;
+  max_discount?: number;
+  min_order?: number;
+}
+
 export type Locale = 'fa' | 'en';
 
 export interface Dictionary {

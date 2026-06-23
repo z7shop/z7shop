@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import { HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineX } from 'react-icons/hi';
 
 interface ImageGalleryProps {
@@ -75,11 +76,13 @@ export default function ImageGallery({ images, name }: ImageGalleryProps) {
               transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
             } : undefined}
           >
-            <img
+            <Image
               src={imgs[activeIndex]}
               alt={`${name} - ${activeIndex + 1}`}
-              loading="lazy"
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+              priority
             />
           </div>
 
@@ -116,7 +119,7 @@ export default function ImageGallery({ images, name }: ImageGalleryProps) {
                 onClick={() => setActiveIndex(i)}
                 className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all ${activeIndex === i ? 'border-gold ring-2 ring-gold/30 scale-105' : 'border-gray-700/50 hover:border-gray-500'}`}
               >
-                <img src={img} alt={`${name} thumbnail ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
+                <Image src={img} alt={`${name} thumbnail ${i + 1}`} fill sizes="80px" className="object-cover" />
               </button>
             ))}
           </div>
@@ -141,9 +144,11 @@ export default function ImageGallery({ images, name }: ImageGalleryProps) {
 
           {/* Image */}
           <div className="max-w-4xl max-h-[85vh] w-full mx-4" onClick={(e) => e.stopPropagation()}>
-            <img
+            <Image
               src={imgs[activeIndex]}
               alt={`${name} - ${activeIndex + 1}`}
+              width={800}
+              height={800}
               className="w-full h-full object-contain rounded-lg animate-fade-in"
             />
           </div>

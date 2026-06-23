@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLocale } from '@/hooks/useLocale';
 import { useStore } from '@/store/useStore';
 import { formatPrice, formatPercent, toPersianNumber } from '@/i18n';
@@ -83,9 +84,9 @@ export default function ProductCard({ product }: Props) {
         <div className="aspect-[3/4] bg-gradient-to-br from-gray-800/60 to-gray-900/80 flex items-center justify-center relative overflow-hidden">
           {images.length > 0 ? (
             <>
-              <img src={images[0]} alt={name} loading="lazy" className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${hasSecondImage ? 'group-hover:opacity-0 group-hover:scale-110' : 'group-hover:scale-105'}`} />
+              <Image src={images[0]} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" className={`object-cover transition-all duration-700 ${hasSecondImage ? 'group-hover:opacity-0 group-hover:scale-110' : 'group-hover:scale-105'}`} />
               {hasSecondImage && (
-                <img src={images[1]} alt={name} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-100 transition-all duration-700" />
+                <Image src={images[1]} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-100 transition-all duration-700" />
               )}
             </>
           ) : (

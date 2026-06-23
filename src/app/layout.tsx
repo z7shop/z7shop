@@ -1,6 +1,15 @@
 import type { Metadata, Viewport } from "next";
+import { Vazirmatn } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import Providers from "@/components/layout/Providers";
+
+const vazirmatn = Vazirmatn({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-vazirmatn",
+});
 
 const BASE_URL = 'https://z7shop.ir';
 
@@ -77,7 +86,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "GOOGLE_SITE_VERIFICATION_CODE",
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
   },
   other: {
     "mobile-web-app-capable": "yes",
@@ -91,19 +100,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = cookies();
+  const locale = cookieStore.get('locale')?.value === 'en' ? 'en' : 'fa';
+  const dir = locale === 'fa' ? 'rtl' : 'ltr';
+
   return (
-    <html lang="fa" dir="rtl" suppressHydrationWarning>
+    <html lang={locale} dir={dir} className={vazirmatn.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: `
           if (!sessionStorage.getItem('z7-splash')) {
             document.documentElement.classList.add('splash-active');
           }
         `}} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icons/icon.svg" />
       </head>
       <body className="min-h-screen">
         <Providers>

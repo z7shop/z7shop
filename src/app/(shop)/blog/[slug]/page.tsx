@@ -9,6 +9,7 @@ import SocialShare from '@/components/ui/SocialShare';
 import { useLocale } from '@/hooks/useLocale';
 import { formatDate, toPersianNumber } from '@/i18n';
 import type { BlogPost } from '@/types';
+import Image from 'next/image';
 import { HiOutlineEye, HiOutlineClock, HiOutlineUser, HiOutlineCalendar, HiOutlineTag } from 'react-icons/hi';
 
 export default function BlogDetailPage() {
@@ -87,7 +88,7 @@ export default function BlogDetailPage() {
         {/* Cover Image */}
         {post.cover_image && (
           <div className="mt-6 aspect-[2/1] rounded-2xl overflow-hidden">
-            <img src={post.cover_image} alt={title} className="w-full h-full object-cover" />
+            <Image src={post.cover_image} alt={title} width={800} height={400} className="w-full h-full object-cover" />
           </div>
         )}
 
@@ -153,7 +154,7 @@ export default function BlogDetailPage() {
                   <Link key={rp.id} href={`/blog/${rp.slug}`} className="card-hover group overflow-hidden">
                     <div className="aspect-[2/1] overflow-hidden">
                       {rp.cover_image ? (
-                        <img src={rp.cover_image} alt={rTitle} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <Image src={rp.cover_image} alt={rTitle} width={600} height={300} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center">
                           <span className="text-3xl opacity-30">📝</span>

@@ -3,10 +3,15 @@ import { dbGet, dbRun } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import { sendVerificationEmail } from '@/lib/mailer';
+import { rateLimit, getRateLimitResponse } from '@/lib/rateLimit';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+  const { allowed } = rateLimit(ip, 5);
+  if (!allowed) return getRateLimitResponse();
+
   const body = await req.json();
 
   if (body.action === 'send') {

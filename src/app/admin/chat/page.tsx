@@ -3,6 +3,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { useLocale } from '@/hooks/useLocale';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 import { HiOutlineCheck, HiOutlineX, HiOutlinePaperAirplane, HiOutlineChatAlt2, HiOutlinePhotograph } from 'react-icons/hi';
 
 interface ChatSession {
@@ -254,7 +255,7 @@ export default function AdminChatPage() {
                           : 'bg-gray-100 dark:bg-gray-800 rounded-bl-md'
                       }`}>
                         {msg.image && (
-                          <img src={msg.image} alt="" className="max-w-full rounded-lg mb-1.5 max-h-48 object-cover cursor-pointer" onClick={() => window.open(msg.image, '_blank')} />
+                          <Image src={msg.image} alt="" width={300} height={192} className="max-w-full rounded-lg mb-1.5 max-h-48 object-cover cursor-pointer" onClick={() => window.open(msg.image, '_blank')} />
                         )}
                         {msg.message && <span>{msg.message}</span>}
                       </div>

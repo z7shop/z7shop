@@ -5,6 +5,7 @@ import { useLocale } from '@/hooks/useLocale';
 import { formatPrice } from '@/i18n';
 import { HiOutlineX, HiOutlineStar } from 'react-icons/hi';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProductFull {
   id: string;
@@ -53,7 +54,7 @@ export default function CompareDrawer() {
               return (
                 <div key={p.id} className="flex items-center gap-2 bg-gray-800/60 rounded-xl px-3 py-2 flex-shrink-0 border border-gray-700/30">
                   <div className="w-8 h-8 bg-gray-700/50 rounded-lg overflow-hidden">
-                    {imgs[0] ? <img src={imgs[0]} alt="" className="w-full h-full object-cover" /> : <span className="flex items-center justify-center w-full h-full text-sm">👔</span>}
+                    {imgs[0] ? <Image src={imgs[0]} alt="" width={32} height={32} className="w-full h-full object-cover" /> : <span className="flex items-center justify-center w-full h-full text-sm">👔</span>}
                   </div>
                   <p className="text-xs font-medium truncate max-w-[100px]">{name}</p>
                   <button onClick={() => removeCompare(p.id)} className="p-1 rounded hover:bg-gray-700 text-gray-500 hover:text-red-400">
@@ -102,7 +103,7 @@ export default function CompareDrawer() {
                         <div className="flex flex-col items-center gap-2">
                           <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-800 border border-gray-700/50">
                             {parseImages(p.images)[0] ? (
-                              <img src={parseImages(p.images)[0]} alt="" className="w-full h-full object-cover" />
+                              <Image src={parseImages(p.images)[0]} alt="" width={80} height={80} className="w-full h-full object-cover" />
                             ) : <span className="flex items-center justify-center w-full h-full text-2xl">👔</span>}
                           </div>
                           <Link href={`/products/${p.id}`} onClick={() => setShowModal(false)} className="text-sm font-medium hover:text-gold transition-colors line-clamp-2 text-center">

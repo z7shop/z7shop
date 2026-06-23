@@ -19,8 +19,9 @@ import { ProductDetailSkeleton } from '@/components/ui/Skeleton';
 import { useLocale } from '@/hooks/useLocale';
 import { useStore } from '@/store/useStore';
 import { formatPrice, formatPercent, toPersianNumber, formatNumber } from '@/i18n';
-import type { Product } from '@/types';
+import type { Product, Bundle, Review } from '@/types';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 import { HiOutlineShoppingCart, HiOutlineHeart, HiHeart, HiMinus, HiPlus, HiCheck, HiOutlineShare, HiOutlineTruck, HiOutlineShieldCheck, HiOutlineRefresh } from 'react-icons/hi';
 
 export default function ProductDetailPage() {
@@ -34,7 +35,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [related, setRelated] = useState<Product[]>([]);
   const [alsoBought, setAlsoBought] = useState<Product[]>([]);
-  const [productBundles, setProductBundles] = useState<any[]>([]);
+  const [productBundles, setProductBundles] = useState<Bundle[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
@@ -45,7 +46,7 @@ export default function ProductDetailPage() {
   const [showShare, setShowShare] = useState(false);
   const [avgRating, setAvgRating] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
-  const [reviews, setReviews] = useState<any[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
 
   useEffect(() => {
     fetch(`/api/products/${id}`)
@@ -68,20 +69,6 @@ export default function ProductDetailPage() {
         if (sizes.length > 0) setSelectedSize(sizes[0]);
         if (colors.length > 0) setSelectedColor(colors[0]);
 
-        const p = data.product;
-        const pName = p.name_fa || p.name_en;
-        const pDesc = p.description_fa || p.description_en;
-        const pImgs: string[] = (() => { try { return JSON.parse(p.images || '[]'); } catch { return []; } })();
-        document.title = `${pName} | Z7shop`;
-        const setMeta = (prop: string, content: string) => {
-          let el = document.querySelector(`meta[property="${prop}"]`) as HTMLMetaElement;
-          if (!el) { el = document.createElement('meta'); el.setAttribute('property', prop); document.head.appendChild(el); }
-          el.setAttribute('content', content);
-        };
-        setMeta('og:title', `${pName} | Z7shop`);
-        setMeta('og:description', pDesc);
-        if (pImgs[0]) setMeta('og:image', pImgs[0]);
-        setMeta('og:type', 'product');
       })
       .catch(() => { setLoading(false); });
 
@@ -524,7 +511,7 @@ export default function ProductDetailPage() {
                       {bProducts.slice(0, 4).map((p: any) => {
                         const imgs: string[] = (() => { try { return JSON.parse(p.images || '[]'); } catch { return []; } })();
                         return (
-                          <img key={p.id} src={imgs[0] || ''} alt="" className="w-12 h-12 rounded-lg object-cover" />
+                          <Image key={p.id} src={imgs[0] || '/images/placeholder.svg'} alt="" width={48} height={48} className="w-12 h-12 rounded-lg object-cover" />
                         );
                       })}
                     </div>

@@ -31,7 +31,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'File too large (max 2MB)' }, { status: 400 });
   }
 
-  const ext = file.name.split('.').pop() || 'jpg';
+  const ALLOWED_EXT = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+  const ext = (file.name.split('.').pop() || '').toLowerCase();
+  if (!ALLOWED_EXT.includes(ext)) {
+    return NextResponse.json({ error: 'Only image files allowed (jpg, png, gif, webp)' }, { status: 400 });
+  }
   const filename = `${uuidv4()}.${ext}`;
 
   await mkdir(UPLOAD_DIR, { recursive: true });

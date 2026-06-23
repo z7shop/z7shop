@@ -7,6 +7,7 @@ import { useLocale } from '@/hooks/useLocale';
 import { formatPrice, formatPercent } from '@/i18n';
 import type { Product } from '@/types';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 import { HiOutlineX, HiOutlineShoppingCart, HiOutlineExternalLink } from 'react-icons/hi';
 
 export default function QuickView() {
@@ -84,7 +85,7 @@ export default function QuickView() {
             <div className="md:w-1/2 aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center overflow-hidden">
               {(() => {
                 const imgs: string[] = (() => { try { return JSON.parse(product.images || '[]'); } catch { return []; } })();
-                return imgs[0] ? <img src={imgs[0]} alt={name} className="w-full h-full object-cover" /> : <span className="text-7xl opacity-30">👔</span>;
+                return imgs[0] ? <Image src={imgs[0]} alt={name} width={400} height={400} className="w-full h-full object-cover" /> : <span className="text-7xl opacity-30">👔</span>;
               })()}
             </div>
             <div className="md:w-1/2 p-6 space-y-4">

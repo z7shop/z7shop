@@ -23,6 +23,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     document.documentElement.dir = locale === 'fa' ? 'rtl' : 'ltr';
     document.documentElement.lang = locale;
+    document.cookie = `locale=${locale};path=/;max-age=31536000;SameSite=Lax`;
   }, [theme, locale]);
 
   return (
