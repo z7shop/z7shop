@@ -91,13 +91,13 @@ export default function Header() {
 
   return (
     <>
-      <header className={`sticky top-0 z-40 transition-all duration-500 ${scrolled ? 'bg-[#0c0c0f]/80 backdrop-blur-2xl border-b border-gold/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.3)]' : 'bg-transparent border-b border-transparent'}`}>
+      <header className={`sticky top-0 z-40 transition-all duration-500 ${scrolled ? 'bg-white/80 dark:bg-[#0c0c0f]/80 backdrop-blur-2xl border-b border-gray-200 dark:border-gold/[0.08] shadow-sm dark:shadow-[0_4px_30px_rgba(0,0,0,0.3)]' : 'bg-transparent border-b border-transparent'}`}>
         {/* Top micro-bar — desktop only */}
         <div className={`hidden md:block transition-all duration-300 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-8 opacity-100'}`}>
-          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-8 text-[11px] text-gray-500">
+          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-8 text-[11px] text-gray-600 dark:text-gray-500">
             <div className="flex items-center gap-4">
               <span>{locale === 'fa' ? 'ارسال رایگان سفارش‌های بالای ۵۰۰ هزار تومان' : 'Free shipping on orders over 500K'}</span>
-              <span className="w-px h-3 bg-gray-700/50" />
+              <span className="w-px h-3 bg-gray-300 dark:bg-gray-700/50" />
               <Link href="/blog" className="hover:text-gold transition-colors">{locale === 'fa' ? 'مجله' : 'Magazine'}</Link>
               <Link href="/contact" className="hover:text-gold transition-colors">{locale === 'fa' ? 'تماس' : 'Contact'}</Link>
             </div>
@@ -105,7 +105,7 @@ export default function Header() {
               <button onClick={toggleLocale} className="hover:text-gold transition-colors font-medium">
                 {dict.common.language}
               </button>
-              <span className="w-px h-3 bg-gray-700/50" />
+              <span className="w-px h-3 bg-gray-300 dark:bg-gray-700/50" />
               <button onClick={toggleTheme} className="hover:text-gold transition-colors flex items-center gap-1">
                 {theme === 'light' ? <HiOutlineMoon className="w-3.5 h-3.5" /> : <HiOutlineSun className="w-3.5 h-3.5" />}
                 {theme === 'light' ? (locale === 'fa' ? 'تاریک' : 'Dark') : (locale === 'fa' ? 'روشن' : 'Light')}
@@ -139,11 +139,11 @@ export default function Header() {
             <div className="hidden md:block flex-1 max-w-md mx-8">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.06] hover:border-gold/30 hover:bg-white/[0.08] transition-all duration-200 group"
+                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/[0.06] hover:border-gold/30 hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-all duration-200 group"
               >
-                <HiOutlineSearch className="w-4 h-4 text-gray-500 group-hover:text-gold transition-colors" />
-                <span className="text-sm text-gray-500 flex-1 text-start">{dict.common.search}</span>
-                <kbd className="hidden lg:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-white/[0.06] text-[10px] text-gray-600 font-mono border border-white/[0.06]">
+                <HiOutlineSearch className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-gold transition-colors" />
+                <span className="text-sm text-gray-500 dark:text-gray-500 flex-1 text-start">{dict.common.search}</span>
+                <kbd className="hidden lg:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-gray-200 dark:bg-white/[0.06] text-[10px] text-gray-500 dark:text-gray-600 font-mono border border-gray-300 dark:border-white/[0.06]">
                   Ctrl K
                 </kbd>
               </button>
@@ -152,12 +152,12 @@ export default function Header() {
             {/* Right: Actions — only search, cart, user menu */}
             <div className="flex items-center gap-0.5 md:gap-1">
               {/* Mobile search */}
-              <button onClick={() => setSearchOpen(true)} aria-label={locale === 'fa' ? 'جستجو' : 'Search'} className="md:hidden relative w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/[0.08] active:scale-95 transition-all duration-200">
+              <button onClick={() => setSearchOpen(true)} aria-label={locale === 'fa' ? 'جستجو' : 'Search'} className="md:hidden relative w-9 h-9 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.08] active:scale-95 transition-all duration-200">
                 <HiOutlineSearch className="w-[18px] h-[18px]" />
               </button>
 
               {/* Cart */}
-              <button onClick={() => setCartOpen(true)} aria-label={locale === 'fa' ? 'سبد خرید' : 'Cart'} className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/[0.08] active:scale-95 transition-all duration-200">
+              <button onClick={() => setCartOpen(true)} aria-label={locale === 'fa' ? 'سبد خرید' : 'Cart'} className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.08] active:scale-95 transition-all duration-200">
                 <HiOutlineShoppingBag className="w-[18px] h-[18px] md:w-5 md:h-5" />
                 {cartCount > 0 && (
                   <span className="absolute -top-0.5 -end-0.5 min-w-[16px] h-4 flex items-center justify-center rounded-full font-bold px-0.5 text-[9px] text-white bg-gradient-to-r from-gold to-gold-light shadow-lg shadow-gold/30 pulse-gold">

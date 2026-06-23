@@ -79,7 +79,7 @@ export default function MegaMenu() {
         >
           <Link
             href={`/products?category=${cat.slug}`}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-gold transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-400 hover:text-gold transition-colors"
           >
             <span className="text-base">{cat.icon}</span>
             {locale === 'fa' ? cat.fa : cat.en}
@@ -87,8 +87,8 @@ export default function MegaMenu() {
 
           {active === cat.slug && (
             <div className="absolute top-full start-0 pt-2 z-50 animate-fade-in">
-              <div className="glass rounded-xl shadow-2xl p-4 min-w-[220px] border border-gray-700/30">
-                <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-700/30">
+              <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl p-4 min-w-[220px] border border-gray-200 dark:border-gray-700/30">
+                <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-200 dark:border-gray-700/30">
                   <span className="text-2xl">{cat.icon}</span>
                   <span className="font-bold text-gold">{locale === 'fa' ? cat.fa : cat.en}</span>
                 </div>
@@ -97,7 +97,7 @@ export default function MegaMenu() {
                     <Link
                       key={sub.q}
                       href={`/products?category=${cat.slug}&search=${sub.q}`}
-                      className="block px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-gray-800/60 transition-colors"
+                      className="block px-3 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800/60 transition-colors"
                       onClick={() => setActive(null)}
                     >
                       {locale === 'fa' ? sub.fa : sub.en}
@@ -106,7 +106,7 @@ export default function MegaMenu() {
                 </div>
                 <Link
                   href={`/products?category=${cat.slug}`}
-                  className="block text-center text-xs text-gold mt-3 pt-3 border-t border-gray-700/30 hover:underline"
+                  className="block text-center text-xs text-gold mt-3 pt-3 border-t border-gray-200 dark:border-gray-700/30 hover:underline"
                   onClick={() => setActive(null)}
                 >
                   {locale === 'fa' ? 'مشاهده همه' : 'View All'}
