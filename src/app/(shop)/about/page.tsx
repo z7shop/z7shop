@@ -96,7 +96,7 @@ export default function AboutPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden py-24 md:py-32">
-          <div className="absolute inset-0 bg-[#0a0a0d]" />
+          <div className="absolute inset-0 bg-gray-100 dark:bg-[#0a0a0d]" />
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,168,76,0.1), transparent)' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: 'linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px)',
@@ -107,11 +107,11 @@ export default function AboutPage() {
               <HiOutlineGlobe className="w-4 h-4" />
               {fa ? 'از سال ۱۴۰۴' : 'Since 2025'}
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
               {fa ? 'درباره ' : 'About '}
               <span className="text-gradient">Z7shop</span>
             </h1>
-            <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
               {fa
                 ? 'Z7shop با هدف ارائه بهترین پوشاک مردانه با کیفیت عالی و قیمت مناسب تاسیس شده است. ما معتقدیم هر مردی لایق بهترین استایل است.'
                 : 'Z7shop was founded to offer the best men\'s clothing with excellent quality at fair prices. We believe every man deserves the best style.'}
@@ -221,7 +221,7 @@ export default function AboutPage() {
               <HiOutlineCheckCircle className="w-6 h-6 text-gold" />
               {fa ? 'داستان ما' : 'Our Story'}
             </h2>
-            <div className="space-y-4 text-sm md:text-base text-gray-400 leading-relaxed">
+            <div className="space-y-4 text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
               <p>
                 {fa
                   ? 'Z7shop در سال ۱۴۰۴ با هدف ایجاد تحولی در صنعت پوشاک مردانه ایران تاسیس شد. ما از همان ابتدا می‌دانستیم که مردان ایرانی به انتخاب‌های بیشتر و بهتری در لباس نیاز دارند.'

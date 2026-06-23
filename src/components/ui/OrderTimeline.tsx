@@ -48,7 +48,7 @@ export default function OrderTimeline({ status, createdAt, updatedAt }: Props) {
 
             {/* Label */}
             <div className={`pt-1.5 ${!isLast ? 'pb-4' : ''}`}>
-              <p className={`text-sm font-medium ${done ? 'text-white' : 'text-gray-500'}`}>
+              <p className={`text-sm font-medium ${done ? 'text-gray-900 dark:text-white' : 'text-gray-500'}`}>
                 {locale === 'fa' ? step.fa : step.en}
               </p>
               {i === 0 && createdAt && (

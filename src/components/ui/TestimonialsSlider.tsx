@@ -97,7 +97,7 @@ export default function TestimonialsSlider() {
           {/* Card */}
           <div
             key={active}
-            className="testimonial-card relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl md:rounded-3xl p-6 md:p-10 text-center"
+            className="testimonial-card relative bg-gray-50 dark:bg-white/[0.03] backdrop-blur-xl border border-gray-200 dark:border-white/[0.08] rounded-2xl md:rounded-3xl p-6 md:p-10 text-center"
           >
             {/* Quote mark */}
             <div className="absolute top-4 start-6 md:top-6 md:start-10 text-gold/10 text-6xl md:text-8xl font-serif leading-none select-none">&ldquo;</div>
@@ -112,18 +112,18 @@ export default function TestimonialsSlider() {
               {Array.from({ length: 5 }).map((_, i) => (
                 <HiStar
                   key={i}
-                  className={`w-4 h-4 md:w-5 md:h-5 ${i < t.rating ? 'text-gold' : 'text-gray-700'}`}
+                  className={`w-4 h-4 md:w-5 md:h-5 ${i < t.rating ? 'text-gold' : 'text-gray-300 dark:text-gray-700'}`}
                 />
               ))}
             </div>
 
             {/* Text */}
-            <p className="text-sm md:text-lg text-gray-300 leading-relaxed md:leading-8 mb-5 md:mb-8 max-w-2xl mx-auto">
+            <p className="text-sm md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed md:leading-8 mb-5 md:mb-8 max-w-2xl mx-auto">
               {locale === 'fa' ? t.text_fa : t.text_en}
             </p>
 
             {/* Name */}
-            <p className="font-bold text-sm md:text-base text-white">
+            <p className="font-bold text-sm md:text-base text-gray-900 dark:text-white">
               {locale === 'fa' ? t.name_fa : t.name_en}
             </p>
             <p className="text-xs text-gray-500 mt-1">
@@ -134,14 +134,14 @@ export default function TestimonialsSlider() {
           {/* Navigation arrows */}
           <button
             onClick={prev}
-            className="absolute top-1/2 -translate-y-1/2 -start-3 md:-start-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/[0.05] border border-white/[0.08] backdrop-blur flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold/30 transition-all duration-300"
+            className="absolute top-1/2 -translate-y-1/2 -start-3 md:-start-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/[0.08] backdrop-blur flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gold hover:border-gold/30 transition-all duration-300"
           >
             <HiOutlineChevronRight className="w-5 h-5 rtl:hidden" />
             <HiOutlineChevronLeft className="w-5 h-5 hidden rtl:block" />
           </button>
           <button
             onClick={next}
-            className="absolute top-1/2 -translate-y-1/2 -end-3 md:-end-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/[0.05] border border-white/[0.08] backdrop-blur flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold/30 transition-all duration-300"
+            className="absolute top-1/2 -translate-y-1/2 -end-3 md:-end-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/[0.08] backdrop-blur flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gold hover:border-gold/30 transition-all duration-300"
           >
             <HiOutlineChevronLeft className="w-5 h-5 rtl:hidden" />
             <HiOutlineChevronRight className="w-5 h-5 hidden rtl:block" />
@@ -154,7 +154,7 @@ export default function TestimonialsSlider() {
             <button
               key={i}
               onClick={() => { setDirection(i > active ? 1 : -1); setActive(i); }}
-              className={`rounded-full transition-all duration-300 ${i === active ? 'w-8 h-2 bg-gold' : 'w-2 h-2 bg-gray-700 hover:bg-gray-600'}`}
+              className={`rounded-full transition-all duration-300 ${i === active ? 'w-8 h-2 bg-gold' : 'w-2 h-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'}`}
             />
           ))}
         </div>

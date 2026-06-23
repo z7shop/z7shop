@@ -60,7 +60,7 @@ export default function BlogDetailPage() {
         <Header />
         <main className="max-w-4xl mx-auto px-4 sm:px-6 py-20 text-center">
           <h1 className="text-6xl font-black text-gradient mb-4">{locale === 'fa' ? '۴۰۴' : '404'}</h1>
-          <p className="text-gray-400 mb-8">{locale === 'fa' ? 'مقاله یافت نشد' : 'Article not found'}</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">{locale === 'fa' ? 'مقاله یافت نشد' : 'Article not found'}</p>
           <Link href="/blog" className="btn-gold">{locale === 'fa' ? 'بازگشت به مجله' : 'Back to Magazine'}</Link>
         </main>
         <Footer />
@@ -95,7 +95,7 @@ export default function BlogDetailPage() {
         {/* Title & Meta */}
         <div className="mt-8 mb-8">
           <h1 className="text-2xl md:text-4xl font-black mb-4 leading-tight">{title}</h1>
-          {excerpt && <p className="text-gray-400 text-lg mb-6">{excerpt}</p>}
+          {excerpt && <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">{excerpt}</p>}
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
             {post.author_name && (

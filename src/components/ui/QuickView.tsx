@@ -95,7 +95,7 @@ export default function QuickView() {
                 {hasDiscount ? (
                   <div className="flex items-center gap-3">
                     <span className="text-2xl font-bold text-gold">{formatPrice(product.discount_price!, locale)} {dict.common.currency}</span>
-                    <span className="text-sm text-gray-400 line-through">{formatPrice(product.price, locale)}</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400 line-through">{formatPrice(product.price, locale)}</span>
                     <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-lg">{formatPercent(discountPercent, locale)}</span>
                   </div>
                 ) : (

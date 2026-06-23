@@ -67,7 +67,7 @@ export default function AdminOrdersPage() {
                     <td className="px-4 py-3 font-mono text-xs">{order.id.slice(0, 8).toUpperCase()}</td>
                     <td className="px-4 py-3">
                       <p className="font-medium">{order.user_name}</p>
-                      <p className="text-xs text-gray-400">{order.user_email}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">{order.user_email}</p>
                     </td>
                     <td className="px-4 py-3 text-xs text-gray-500">
                       {items.map((i: any) => `${locale === 'fa' ? i.name_fa : i.name_en} x${i.quantity}`).join(', ')}

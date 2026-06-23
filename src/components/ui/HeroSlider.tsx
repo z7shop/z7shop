@@ -72,12 +72,12 @@ export default function HeroSlider() {
 
   if (slides.length === 0) {
     return (
-      <section className="relative overflow-hidden min-h-0 md:min-h-[85vh] flex items-center bg-[#0a0a0d]">
+      <section className="relative overflow-hidden min-h-0 md:min-h-[85vh] flex items-center bg-gray-100 dark:bg-[#0a0a0d]">
         <div className="max-w-7xl mx-auto px-4 w-full py-20">
           <div className="animate-pulse space-y-6">
-            <div className="h-8 w-48 bg-gray-800 rounded-full" />
-            <div className="h-16 w-96 bg-gray-800 rounded-xl" />
-            <div className="h-6 w-72 bg-gray-800 rounded-lg" />
+            <div className="h-8 w-48 bg-gray-200 dark:bg-gray-800 rounded-full" />
+            <div className="h-16 w-96 bg-gray-200 dark:bg-gray-800 rounded-xl" />
+            <div className="h-6 w-72 bg-gray-200 dark:bg-gray-800 rounded-lg" />
           </div>
         </div>
       </section>
@@ -88,7 +88,7 @@ export default function HeroSlider() {
   return (
     <section className="relative overflow-hidden min-h-0 md:min-h-[85vh] flex items-center">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#0a0a0d]">
+      <div className="absolute inset-0 bg-gray-100 dark:bg-[#0a0a0d]">
         <div
           key={active}
           className="absolute inset-0 hero-slide-bg"
@@ -141,11 +141,11 @@ export default function HeroSlider() {
               {locale === 'fa' ? slide.badge_fa : slide.badge_en}
             </div>
 
-            <h1 key={`title-${active}`} className="hero-slide-content-delay-1 text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-5 md:mb-6 leading-[1.15] text-white tracking-tight">
+            <h1 key={`title-${active}`} className="hero-slide-content-delay-1 text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-5 md:mb-6 leading-[1.15] text-gray-900 dark:text-white tracking-tight">
               {locale === 'fa' ? slide.title_fa : slide.title_en}
             </h1>
 
-            <p key={`sub-${active}`} className="hero-slide-content-delay-2 text-sm md:text-lg text-gray-400 mb-8 md:mb-10 leading-relaxed max-w-md mx-auto md:mx-0">
+            <p key={`sub-${active}`} className="hero-slide-content-delay-2 text-sm md:text-lg text-gray-600 dark:text-gray-400 mb-8 md:mb-10 leading-relaxed max-w-md mx-auto md:mx-0">
               {locale === 'fa' ? slide.subtitle_fa : slide.subtitle_en}
             </p>
 
@@ -201,19 +201,19 @@ export default function HeroSlider() {
               <div className="absolute top-8 -start-4 bg-gray-900/80 backdrop-blur border border-gold/20 rounded-xl px-4 py-3 animate-float">
                 <div className="flex items-center gap-2">
                   <HiOutlineShieldCheck className="w-5 h-5 text-gold" />
-                  <span className="text-sm text-gray-300">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
                 </div>
               </div>
               <div className="absolute bottom-12 -end-4 bg-gray-900/80 backdrop-blur border border-gold/20 rounded-xl px-4 py-3 animate-float-reverse">
                 <div className="flex items-center gap-2">
                   <HiOutlineTruck className="w-5 h-5 text-gold" />
-                  <span className="text-sm text-gray-300">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
                 </div>
               </div>
               <div className="absolute top-1/2 -end-8 bg-gray-900/80 backdrop-blur border border-gold/20 rounded-xl px-4 py-3 animate-float" style={{ animationDelay: '2s' }}>
                 <div className="flex items-center gap-2">
                   <HiOutlineRefresh className="w-5 h-5 text-gold" />
-                  <span className="text-sm text-gray-300">{locale === 'fa' ? 'بازگشت آسان' : 'Easy Return'}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">{locale === 'fa' ? 'بازگشت آسان' : 'Easy Return'}</span>
                 </div>
               </div>
             </div>

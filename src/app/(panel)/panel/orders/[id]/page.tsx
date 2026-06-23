@@ -58,7 +58,7 @@ export default function OrderDetailPage() {
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <button onClick={() => router.push('/panel/orders')} className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors">
+          <button onClick={() => router.push('/panel/orders')} className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-white transition-colors">
             <BackArrow className="w-4 h-4" />
             {locale === 'fa' ? 'بازگشت به سفارش‌ها' : 'Back to Orders'}
           </button>
@@ -117,7 +117,7 @@ export default function OrderDetailPage() {
                 ))}
               </div>
               <div className="p-4 border-t border-gray-100 dark:border-gray-700 space-y-2">
-                <div className="flex justify-between text-sm text-gray-400">
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>{dict.cart.subtotal}</span>
                   <span>{formatPrice(subtotal, locale)} {dict.common.currency}</span>
                 </div>
@@ -127,7 +127,7 @@ export default function OrderDetailPage() {
                     <span>-{formatPrice(order.discount_amount, locale)} {dict.common.currency}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-sm text-gray-400">
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>{dict.cart.shipping}</span>
                   <span>{shippingCost === 0 ? dict.cart.freeShipping : `${formatPrice(shippingCost, locale)} ${dict.common.currency}`}</span>
                 </div>

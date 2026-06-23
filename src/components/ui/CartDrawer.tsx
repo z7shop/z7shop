@@ -147,7 +147,7 @@ export default function CartDrawer() {
                         <span className="text-sm font-bold text-gold">{formatPrice(price * item.quantity, locale)}</span>
                       </div>
                     </div>
-                    <button onClick={() => removeItem(item.id)} className="text-gray-400 hover:text-red-500 self-start p-1">
+                    <button onClick={() => removeItem(item.id)} className="text-gray-500 dark:text-gray-400 hover:text-red-500 self-start p-1">
                       <HiOutlineTrash className="w-4 h-4" />
                     </button>
                   </div>

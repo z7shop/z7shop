@@ -204,7 +204,7 @@ export default function AdminDashboard() {
                   <div key={i} className="flex items-center gap-3">
                     <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: CAT_COLORS[i % CAT_COLORS.length] }} />
                     <span className="text-sm flex-1">{locale === 'fa' ? c.name_fa : c.name_en}</span>
-                    <span className="text-sm font-bold text-gray-400">{pct}%</span>
+                    <span className="text-sm font-bold text-gray-600 dark:text-gray-400">{pct}%</span>
                   </div>
                 );
               })}
@@ -225,7 +225,7 @@ export default function AdminDashboard() {
                     {i + 1}
                   </span>
                   <span className="flex-1 text-sm font-medium truncate">{locale === 'fa' ? p.name_fa : p.name_en}</span>
-                  <span className="text-sm text-gray-400">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
                     {p.count} {locale === 'fa' ? 'فروش' : 'sold'}
                   </span>
                 </div>
@@ -253,7 +253,7 @@ export default function AdminDashboard() {
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: STATUS_COLORS[status] }} />
                       <span className="text-sm">{(dict.panel.orderStatus as any)[status]}</span>
                     </div>
-                    <span className="text-sm text-gray-400">{count} ({pct}%)</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{count} ({pct}%)</span>
                   </div>
                   <div className="w-full h-2.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
                     <div

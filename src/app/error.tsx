@@ -8,7 +8,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
   const fa = locale === 'fa';
 
   return (
-    <div className="min-h-screen bg-[#0c0c0f] flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#0c0c0f] flex items-center justify-center px-4 relative overflow-hidden">
       <div className="absolute inset-0" style={{
         backgroundImage: 'radial-gradient(ellipse 50% 30% at 50% 50%, rgba(239, 68, 68, 0.04), transparent)'
       }} />
@@ -21,7 +21,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
           <div className="absolute inset-0 w-24 h-24 rounded-full border border-red-500/10 mx-auto animate-ping" style={{ animationDuration: '2s' }} />
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-bold mb-3 text-white">
+        <h1 className="text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-white">
           {fa ? 'خطایی رخ داد' : 'Something went wrong'}
         </h1>
         <p className="text-gray-500 mb-4 text-sm leading-relaxed">

@@ -53,7 +53,7 @@ export default function PWAInstall() {
           </div>
           <div className="flex-1 min-w-0">
             <p className="font-bold text-sm">{(dict.pwa as any).install}</p>
-            <p className="text-xs text-gray-400 mt-0.5">{(dict.pwa as any).installDesc}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{(dict.pwa as any).installDesc}</p>
             <div className="flex gap-2 mt-3">
               <button onClick={handleInstall} className="btn-gold text-xs px-4 py-1.5">
                 {(dict.pwa as any).installButton}

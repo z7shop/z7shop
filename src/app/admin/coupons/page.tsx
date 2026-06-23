@@ -184,10 +184,10 @@ export default function AdminCouponsPage() {
                   <td className="px-4 py-3 text-gray-500 text-xs">{formatDate(c.expires_at, locale)}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1">
-                      <button onClick={() => handleEdit(c)} className="p-1.5 rounded-lg hover:bg-gold/10 text-gray-400 hover:text-gold transition-colors">
+                      <button onClick={() => handleEdit(c)} className="p-1.5 rounded-lg hover:bg-gold/10 text-gray-600 dark:text-gray-400 hover:text-gold transition-colors">
                         <HiOutlinePencil className="w-4 h-4" />
                       </button>
-                      <button onClick={() => handleDelete(c.id)} className="p-1.5 rounded-lg hover:bg-red-500/10 text-gray-400 hover:text-red-500 transition-colors">
+                      <button onClick={() => handleDelete(c.id)} className="p-1.5 rounded-lg hover:bg-red-500/10 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors">
                         <HiOutlineTrash className="w-4 h-4" />
                       </button>
                     </div>

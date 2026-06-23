@@ -61,7 +61,7 @@ export default function AdminProductsPage() {
                       <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center text-lg">👔</div>
                       <div>
                         <p className="font-medium line-clamp-1">{locale === 'fa' ? p.name_fa : p.name_en}</p>
-                        <p className="text-xs text-gray-400">{locale === 'fa' ? p.name_en : p.name_fa}</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">{locale === 'fa' ? p.name_en : p.name_fa}</p>
                       </div>
                     </div>
                   </td>
@@ -69,7 +69,7 @@ export default function AdminProductsPage() {
                     {p.discount_price ? (
                       <div>
                         <span className="text-gold font-medium">{formatPrice(p.discount_price, locale)}</span>
-                        <span className="text-xs text-gray-400 line-through ms-1">{formatPrice(p.price, locale)}</span>
+                        <span className="text-xs text-gray-600 dark:text-gray-400 line-through ms-1">{formatPrice(p.price, locale)}</span>
                       </div>
                     ) : (
                       <span>{formatPrice(p.price, locale)}</span>

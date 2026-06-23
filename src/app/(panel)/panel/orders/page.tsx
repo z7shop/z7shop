@@ -36,7 +36,7 @@ export default function OrdersPage() {
           <div className="text-center py-10 text-gray-500">{dict.common.loading}</div>
         ) : orders.length === 0 ? (
           <div className="text-center py-16">
-            <HiOutlineClipboardList className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+            <HiOutlineClipboardList className="w-16 h-16 mx-auto text-gray-700 dark:text-gray-300 mb-4" />
             <p className="text-gray-500">{dict.panel.noOrders}</p>
           </div>
         ) : (

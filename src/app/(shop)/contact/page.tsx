@@ -72,18 +72,18 @@ export default function ContactPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden py-20 md:py-28">
-          <div className="absolute inset-0 bg-[#0a0a0d]" />
+          <div className="absolute inset-0 bg-gray-100 dark:bg-[#0a0a0d]" />
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,168,76,0.1), transparent)' }} />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
             <div className="inline-flex items-center gap-2 bg-gold/10 text-gold text-xs px-4 py-2 rounded-full mb-6 border border-gold/20">
               <HiOutlineChat className="w-4 h-4" />
               {fa ? 'پاسخگوی شما هستیم' : "We're here to help"}
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-5">
+            <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-5">
               {fa ? 'تماس با ' : 'Contact '}
               <span className="text-gradient">{fa ? 'ما' : 'Us'}</span>
             </h1>
-            <p className="text-gray-400 text-sm md:text-lg max-w-lg mx-auto">
+            <p className="text-gray-600 dark:text-gray-400 text-sm md:text-lg max-w-lg mx-auto">
               {fa ? 'سوالی دارید؟ خوشحال می‌شویم که کمکتان کنیم. از هر طریقی که راحت‌ترید با ما در ارتباط باشید.' : 'Have a question? We\'d love to help. Reach out through any channel you prefer.'}
             </p>
           </div>
@@ -121,20 +121,20 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-medium text-gray-400 mb-1.5 block">{fa ? 'نام' : 'Name'}</label>
+                      <label className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5 block">{fa ? 'نام' : 'Name'}</label>
                       <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="input-field" required />
                     </div>
                     <div>
-                      <label className="text-xs font-medium text-gray-400 mb-1.5 block">{fa ? 'ایمیل' : 'Email'}</label>
+                      <label className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5 block">{fa ? 'ایمیل' : 'Email'}</label>
                       <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} className="input-field" dir="ltr" required />
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-400 mb-1.5 block">{fa ? 'موضوع' : 'Subject'}</label>
+                    <label className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5 block">{fa ? 'موضوع' : 'Subject'}</label>
                     <input value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="input-field" required />
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-400 mb-1.5 block">{fa ? 'پیام' : 'Message'}</label>
+                    <label className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5 block">{fa ? 'پیام' : 'Message'}</label>
                     <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={5} className="input-field resize-none" required />
                   </div>
                   <button type="submit" disabled={sending} className="btn-gold w-full py-3 disabled:opacity-50">
@@ -152,7 +152,7 @@ export default function ContactPage() {
                 <h3 className="text-sm font-bold mb-4">{fa ? 'ما را دنبال کنید' : 'Follow Us'}</h3>
                 <div className="flex gap-3">
                   {socials.map((s, i) => (
-                    <a key={i} href="#" className={`w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.06] ${s.color} hover:border-transparent hover:scale-110 transition-all duration-300 text-gray-400 hover:text-white`}>
+                    <a key={i} href="#" className={`w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.06] ${s.color} hover:border-transparent hover:scale-110 transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-white`}>
                       <s.icon className="w-5 h-5" />
                     </a>
                   ))}
@@ -178,7 +178,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold mb-1">{fa ? 'زمان پاسخ‌دهی' : 'Response Time'}</h3>
-                    <p className="text-xs text-gray-400 leading-5">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-5">
                       {fa ? 'تیم پشتیبانی ما معمولاً در کمتر از ۲ ساعت پاسخ می‌دهد.' : 'Our support team usually responds within 2 hours.'}
                     </p>
                   </div>

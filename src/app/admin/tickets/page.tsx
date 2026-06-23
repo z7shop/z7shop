@@ -71,7 +71,7 @@ export default function AdminTicketsPage() {
   const statusConfig: Record<string, { label: string; cls: string; icon: any }> = {
     open: { label: locale === 'fa' ? 'باز' : 'Open', cls: 'bg-blue-500/10 text-blue-400 border-blue-500/20', icon: HiOutlineExclamationCircle },
     answered: { label: locale === 'fa' ? 'پاسخ داده شده' : 'Answered', cls: 'bg-green-500/10 text-green-400 border-green-500/20', icon: HiOutlineCheckCircle },
-    closed: { label: locale === 'fa' ? 'بسته شده' : 'Closed', cls: 'bg-gray-500/10 text-gray-400 border-gray-500/20', icon: HiOutlineClock },
+    closed: { label: locale === 'fa' ? 'بسته شده' : 'Closed', cls: 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/20', icon: HiOutlineClock },
   };
 
   const departmentLabel: Record<string, string> = {
@@ -103,7 +103,7 @@ export default function AdminTicketsPage() {
           </div>
           <div className="flex gap-2">
             {['all', 'open', 'answered', 'closed'].map(f => (
-              <button key={f} onClick={() => setFilter(f)} className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${filter === f ? 'border-gold text-gold bg-gold/10' : 'border-gray-700 text-gray-400 hover:border-gray-500'}`}>
+              <button key={f} onClick={() => setFilter(f)} className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${filter === f ? 'border-gold text-gold bg-gold/10' : 'border-gray-700 text-gray-600 dark:text-gray-400 hover:border-gray-500'}`}>
                 {f === 'all' ? (locale === 'fa' ? 'همه' : 'All') : statusConfig[f]?.label}
               </button>
             ))}

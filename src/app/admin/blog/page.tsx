@@ -75,7 +75,7 @@ export default function AdminBlogPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="flex items-center gap-1 text-gray-400">
+                    <span className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                       <HiOutlineEye className="w-4 h-4" />
                       {locale === 'fa' ? toPersianNumber(post.views) : post.views}
                     </span>

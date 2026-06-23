@@ -99,7 +99,7 @@ export default function PushNotificationPrompt() {
           </div>
           <div className="flex-1 min-w-0">
             <h4 className="text-sm font-semibold text-white mb-1">{t?.promptTitle}</h4>
-            <p className="text-xs text-gray-400 mb-3">{t?.promptMessage}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">{t?.promptMessage}</p>
             <button
               onClick={handleEnable}
               disabled={loading}

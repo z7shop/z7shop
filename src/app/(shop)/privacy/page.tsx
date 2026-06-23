@@ -64,14 +64,14 @@ export default function PrivacyPage() {
       <Header />
       <main>
         <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-[#0a0a0d]" />
+          <div className="absolute inset-0 bg-gray-100 dark:bg-[#0a0a0d]" />
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,168,76,0.1), transparent)' }} />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <h1 className="text-3xl md:text-5xl font-black text-white mb-4 animate-slide-up">
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 animate-slide-up">
               {fa ? 'حریم ' : 'Privacy '}
               <span className="text-gradient">{fa ? 'خصوصی' : 'Policy'}</span>
             </h1>
-            <p className="text-gray-400 text-sm md:text-lg animate-slide-up-delay-1">
+            <p className="text-gray-600 dark:text-gray-400 text-sm md:text-lg animate-slide-up-delay-1">
               {fa ? 'حفاظت از اطلاعات شما برای ما اهمیت دارد' : 'Protecting your data matters to us'}
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function PrivacyPage() {
                   <span className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold text-sm font-black">{i + 1}</span>
                   {section.title}
                 </h2>
-                <p className="text-sm text-gray-400 leading-relaxed">{section.content}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{section.content}</p>
               </div>
             ))}
           </div>

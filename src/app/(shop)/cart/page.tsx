@@ -114,7 +114,7 @@ export default function CartPage() {
       <>
         <Header />
         <main className="max-w-4xl mx-auto px-4 sm:px-6 py-20 text-center">
-          <HiOutlineShoppingBag className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+          <HiOutlineShoppingBag className="w-16 h-16 mx-auto text-gray-700 dark:text-gray-300 mb-4" />
           <p className="text-gray-500 mb-4">{locale === 'fa' ? 'برای مشاهده سبد خرید وارد شوید' : 'Please login to view your cart'}</p>
           <Link href="/login" className="btn-gold">{dict.common.login}</Link>
         </main>
@@ -131,7 +131,7 @@ export default function CartPage() {
 
         {items.length === 0 && !loading ? (
           <div className="text-center py-20">
-            <HiOutlineShoppingBag className="w-20 h-20 mx-auto text-gray-300 mb-4" />
+            <HiOutlineShoppingBag className="w-20 h-20 mx-auto text-gray-700 dark:text-gray-300 mb-4" />
             <p className="text-gray-500 text-lg mb-6">{dict.cart.empty}</p>
             <Link href="/products" className="btn-gold">{dict.cart.continueShopping}</Link>
           </div>
@@ -174,7 +174,7 @@ export default function CartPage() {
                         </span>
                       </div>
                     </div>
-                    <button onClick={() => removeItem(item.id)} className="text-gray-400 hover:text-red-500 transition-colors self-start p-1">
+                    <button onClick={() => removeItem(item.id)} className="text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors self-start p-1">
                       <HiOutlineTrash className="w-5 h-5" />
                     </button>
                   </div>
@@ -189,7 +189,7 @@ export default function CartPage() {
                 <label className="text-sm font-medium mb-2 block">{dict.cart.coupon}</label>
                 <div className="flex gap-2">
                   <div className="relative flex-1">
-                    <HiOutlineTag className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <HiOutlineTag className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 dark:text-gray-400" />
                     <input
                       type="text"
                       value={couponCode}

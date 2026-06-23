@@ -137,13 +137,13 @@ export default function FaqPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-[#0a0a0d]" />
+          <div className="absolute inset-0 bg-gray-100 dark:bg-[#0a0a0d]" />
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse 60% 40% at 50% 20%, rgba(201, 168, 76, 0.1), transparent)' }} />
           <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <h1 className="text-3xl md:text-5xl font-black text-white mb-4">
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
               {fa ? 'سوالات متداول' : 'Frequently Asked Questions'}
             </h1>
-            <p className="text-gray-400 text-sm md:text-lg mb-8">
+            <p className="text-gray-600 dark:text-gray-400 text-sm md:text-lg mb-8">
               {fa ? 'پاسخ سوالات رایج درباره خرید، ارسال، بازگشت و حساب کاربری' : 'Answers to common questions about shopping, shipping, returns, and your account'}
             </p>
             <div className="relative max-w-lg mx-auto">
@@ -164,7 +164,7 @@ export default function FaqPage() {
           <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
             <button
               onClick={() => setActiveCategory(null)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${!activeCategory ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'bg-white/[0.06] text-gray-400 hover:bg-white/[0.1] border border-white/[0.06]'}`}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${!activeCategory ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'bg-white/[0.06] text-gray-600 dark:text-gray-400 hover:bg-white/[0.1] border border-white/[0.06]'}`}
             >
               {fa ? 'همه' : 'All'}
             </button>
@@ -172,7 +172,7 @@ export default function FaqPage() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${activeCategory === cat.id ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'bg-white/[0.06] text-gray-400 hover:bg-white/[0.1] border border-white/[0.06]'}`}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${activeCategory === cat.id ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'bg-white/[0.06] text-gray-600 dark:text-gray-400 hover:bg-white/[0.1] border border-white/[0.06]'}`}
               >
                 <cat.icon className="w-4 h-4" />
                 {fa ? cat.title_fa : cat.title_en}
@@ -223,7 +223,7 @@ export default function FaqPage() {
                           >
                             <div className="px-5 pb-4 pt-0">
                               <div className="h-px bg-gray-800/30 mb-3" />
-                              <p className="text-sm text-gray-400 leading-7">{fa ? item.a_fa : item.a_en}</p>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">{fa ? item.a_fa : item.a_en}</p>
                             </div>
                           </div>
                         </div>
@@ -243,7 +243,7 @@ export default function FaqPage() {
             <h2 className="text-xl md:text-2xl font-bold mb-3">
               {fa ? 'هنوز سوالی دارید؟' : 'Still have questions?'}
             </h2>
-            <p className="text-gray-400 text-sm mb-6">
+            <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">
               {fa ? 'تیم پشتیبانی ما آماده پاسخگویی به سوالات شماست' : 'Our support team is ready to help'}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

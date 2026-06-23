@@ -34,7 +34,7 @@ export default function PriceRangeSlider({ min, max, value, onChange, locale }: 
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between text-xs text-gray-400">
+      <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
         <span>{formatPrice(localMin, locale)} {locale === 'fa' ? 'تومان' : 'T'}</span>
         <span>{formatPrice(localMax, locale)} {locale === 'fa' ? 'تومان' : 'T'}</span>
       </div>

@@ -110,7 +110,7 @@ export default function TicketsPage() {
     },
     closed: {
       label: locale === 'fa' ? 'بسته شده' : 'Closed',
-      class: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
+      class: 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/20',
       icon: HiOutlineClock,
     },
   };
@@ -257,7 +257,7 @@ export default function TicketsPage() {
                           <span>{ticket.message_count} {locale === 'fa' ? 'پیام' : 'messages'}</span>
                         </div>
                       </div>
-                      <ArrowIcon className="w-5 h-5 text-gray-400 group-hover:text-gold transition-colors flex-shrink-0" />
+                      <ArrowIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-gold transition-colors flex-shrink-0" />
                     </div>
                   </button>
                 );

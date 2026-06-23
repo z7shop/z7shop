@@ -70,7 +70,7 @@ export default function AddressesPage() {
             <button
               type="button"
               onClick={() => setShowMap(!showMap)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all border ${showMap ? 'border-gold/50 bg-gold/10 text-gold' : 'border-gray-700 text-gray-400 hover:border-gold/30 hover:text-gold'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all border ${showMap ? 'border-gold/50 bg-gold/10 text-gold' : 'border-gray-700 text-gray-600 dark:text-gray-400 hover:border-gold/30 hover:text-gold'}`}
             >
               <HiOutlineMap className="w-4 h-4" />
               {locale === 'fa' ? 'انتخاب از روی نقشه' : 'Select from Map'}
@@ -108,7 +108,7 @@ export default function AddressesPage() {
 
         {addresses.length === 0 && !showForm && (
           <div className="text-center py-16">
-            <HiOutlineLocationMarker className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+            <HiOutlineLocationMarker className="w-16 h-16 mx-auto text-gray-700 dark:text-gray-300 mb-4" />
             <p className="text-gray-500">{locale === 'fa' ? 'هنوز آدرسی ثبت نشده' : 'No addresses yet'}</p>
           </div>
         )}

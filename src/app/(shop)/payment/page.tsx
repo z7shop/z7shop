@@ -9,7 +9,7 @@ import { HiCheck, HiX, HiOutlineCreditCard, HiOutlineShieldCheck, HiOutlineLockC
 
 export default function PaymentPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0a0a0d]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-white dark:bg-[#0a0a0d]" />}>
       <PaymentContent />
     </Suspense>
   );
@@ -125,27 +125,27 @@ function PaymentContent() {
 
   if (result === 'success') {
     return (
-      <div className="min-h-screen bg-[#0a0a0d] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-white dark:bg-[#0a0a0d] flex items-center justify-center p-4">
         <ConfettiEffect active={true} />
         <div className="w-full max-w-md bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center animate-slide-up">
           <div className="w-20 h-20 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
             <HiCheck className="w-10 h-10 text-green-400" />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">{dict.payment.success}</h2>
-          <p className="text-gray-400 mb-6">{dict.payment.successMsg}</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{dict.payment.success}</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">{dict.payment.successMsg}</p>
 
           <div className="bg-gray-800/50 rounded-xl p-4 mb-4 space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">{dict.payment.refNumber}</span>
+              <span className="text-gray-600 dark:text-gray-400">{dict.payment.refNumber}</span>
               <span className="font-mono text-gold font-bold">{refNumber}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">{dict.payment.amount}</span>
-              <span className="text-white font-bold">{formatPrice(amount, locale)} {dict.common.currency}</span>
+              <span className="text-gray-600 dark:text-gray-400">{dict.payment.amount}</span>
+              <span className="text-gray-900 dark:text-white font-bold">{formatPrice(amount, locale)} {dict.common.currency}</span>
             </div>
             {pointsEarned > 0 && (
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">{dict.loyalty.points}</span>
+                <span className="text-gray-600 dark:text-gray-400">{dict.loyalty.points}</span>
                 <span className="text-gold font-bold">+{pointsEarned}</span>
               </div>
             )}
@@ -166,13 +166,13 @@ function PaymentContent() {
 
   if (result === 'failed') {
     return (
-      <div className="min-h-screen bg-[#0a0a0d] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-white dark:bg-[#0a0a0d] flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center animate-slide-up">
           <div className="w-20 h-20 bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
             <HiX className="w-10 h-10 text-red-400" />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">{dict.payment.failed}</h2>
-          <p className="text-gray-400 mb-6">{dict.payment.failedMsg}</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{dict.payment.failed}</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">{dict.payment.failedMsg}</p>
           <div className="flex gap-3">
             <button onClick={() => { setResult(null); setCaptchaInput(''); }} className="btn-gold flex-1 py-3">
               {dict.payment.retry}
@@ -187,13 +187,13 @@ function PaymentContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0d] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0d] flex items-center justify-center p-4">
       <div className="w-full max-w-lg">
         {/* Header */}
         <div className="text-center mb-6">
           <div className="inline-flex items-center gap-2 mb-4">
             <HiOutlineLockClosed className="w-5 h-5 text-gold" />
-            <span className="text-sm text-gray-400">{locale === 'fa' ? 'اتصال امن' : 'Secure Connection'}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'اتصال امن' : 'Secure Connection'}</span>
           </div>
           <h1 className="text-2xl font-bold text-gradient">{dict.payment.title}</h1>
         </div>
@@ -214,7 +214,7 @@ function PaymentContent() {
           <div className="p-6 space-y-5">
             {/* Amount */}
             <div className="bg-gray-800/50 rounded-xl p-4 text-center">
-              <p className="text-xs text-gray-400 mb-1">{dict.payment.amount}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{dict.payment.amount}</p>
               <p className="text-2xl font-black text-gold">
                 {formatPrice(amount, locale)} <span className="text-sm">{dict.common.currency}</span>
               </p>
@@ -222,7 +222,7 @@ function PaymentContent() {
 
             {/* Card Number */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">{dict.payment.cardNumber}</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{dict.payment.cardNumber}</label>
               <input
                 type="text"
                 value={cardNumber}
@@ -237,7 +237,7 @@ function PaymentContent() {
             {/* CVV + Expiry */}
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">CVV2</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">CVV2</label>
                 <input
                   type="text"
                   value={cvv}
@@ -249,7 +249,7 @@ function PaymentContent() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">{locale === 'fa' ? 'ماه' : 'Month'}</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{locale === 'fa' ? 'ماه' : 'Month'}</label>
                 <select
                   value={expMonth}
                   onChange={(e) => setExpMonth(e.target.value)}
@@ -259,7 +259,7 @@ function PaymentContent() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">{locale === 'fa' ? 'سال' : 'Year'}</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{locale === 'fa' ? 'سال' : 'Year'}</label>
                 <select
                   value={expYear}
                   onChange={(e) => setExpYear(e.target.value)}
@@ -272,7 +272,7 @@ function PaymentContent() {
 
             {/* CAPTCHA */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">{locale === 'fa' ? 'کد امنیتی' : 'Security Code'}</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{locale === 'fa' ? 'کد امنیتی' : 'Security Code'}</label>
               <div className="flex gap-3 items-center">
                 <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl px-6 py-3 select-none flex-shrink-0 border border-gray-600/50">
                   <span className="font-mono text-2xl tracking-[0.3em] text-gold font-bold" style={{

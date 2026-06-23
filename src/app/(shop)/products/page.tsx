@@ -148,7 +148,7 @@ function ProductsContent() {
             {/* Search */}
             <div className="mb-6">
               <div className="relative">
-                <HiOutlineSearch className="absolute start-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <HiOutlineSearch className="absolute start-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 dark:text-gray-400" />
                 <input
                   type="text"
                   value={search}
@@ -280,7 +280,7 @@ function ProductsContent() {
                 ? Array.from({ length: 6 }).map((_, i) => <ProductCardSkeleton key={i} />)
                 : products.length > 0
                   ? products.map(p => <ProductCard key={p.id} product={p} />)
-                  : <div className="col-span-full text-center py-20 text-gray-400">{dict.common.noResults}</div>
+                  : <div className="col-span-full text-center py-20 text-gray-600 dark:text-gray-400">{dict.common.noResults}</div>
               }
             </div>
 

@@ -81,7 +81,7 @@ export default function LoyaltyPage() {
           <p className="text-5xl font-black text-gold mb-4">
             {loading ? '...' : locale === 'fa' ? toPersianNumber(totalPoints) : totalPoints}
           </p>
-          <p className="text-sm text-gray-400">{l.points}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{l.points}</p>
           {totalPoints >= 100 && (
             <button
               onClick={handleRedeem}

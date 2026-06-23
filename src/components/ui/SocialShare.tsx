@@ -56,7 +56,7 @@ export default function SocialShare({ url, title }: Props) {
           target="_blank"
           rel="noopener noreferrer"
           title={ch.label}
-          className={`w-9 h-9 flex items-center justify-center rounded-xl bg-gray-800/40 border border-gray-700/30 text-gray-400 transition-all duration-200 hover:scale-110 ${ch.color}`}
+          className={`w-9 h-9 flex items-center justify-center rounded-xl bg-gray-800/40 border border-gray-700/30 text-gray-600 dark:text-gray-400 transition-all duration-200 hover:scale-110 ${ch.color}`}
         >
           <ch.icon className="w-4 h-4" />
         </a>
@@ -64,7 +64,7 @@ export default function SocialShare({ url, title }: Props) {
       <button
         onClick={copyLink}
         title={locale === 'fa' ? 'کپی لینک' : 'Copy Link'}
-        className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-800/40 border border-gray-700/30 text-gray-400 transition-all duration-200 hover:scale-110 hover:text-gold"
+        className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-800/40 border border-gray-700/30 text-gray-600 dark:text-gray-400 transition-all duration-200 hover:scale-110 hover:text-gold"
       >
         <HiOutlineLink className="w-4 h-4" />
       </button>

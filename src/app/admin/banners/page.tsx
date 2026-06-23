@@ -225,14 +225,14 @@ export default function AdminBannersPage() {
               </p>
               <div className="flex items-center gap-3 mt-1">
                 <span className="text-[10px] text-gold">{b.cta_link}</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-400">{b.accent_color}</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-600 dark:text-gray-400">{b.accent_color}</span>
               </div>
             </div>
             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-              <button onClick={() => handleEdit(b)} className="p-2 rounded-lg hover:bg-gold/10 text-gray-400 hover:text-gold transition-colors">
+              <button onClick={() => handleEdit(b)} className="p-2 rounded-lg hover:bg-gold/10 text-gray-600 dark:text-gray-400 hover:text-gold transition-colors">
                 <HiOutlinePencil className="w-4 h-4" />
               </button>
-              <button onClick={() => handleDelete(b.id)} className="p-2 rounded-lg hover:bg-red-500/10 text-gray-400 hover:text-red-500 transition-colors">
+              <button onClick={() => handleDelete(b.id)} className="p-2 rounded-lg hover:bg-red-500/10 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors">
                 <HiOutlineTrash className="w-4 h-4" />
               </button>
             </div>

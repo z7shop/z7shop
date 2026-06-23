@@ -234,11 +234,11 @@ export default function ProductDetailPage() {
             {/* Rating */}
             <div className="flex items-center gap-3 mb-5">
               <StarRating rating={avgRating} size="sm" />
-              <button onClick={() => setActiveTab('reviews')} className="text-sm text-gray-400 hover:text-gold transition-colors">
+              <button onClick={() => setActiveTab('reviews')} className="text-sm text-gray-600 dark:text-gray-400 hover:text-gold transition-colors">
                 {locale === 'fa' ? `${toPersianNumber(reviewCount)} نظر` : `${reviewCount} reviews`}
               </button>
               <span className="text-gray-700">|</span>
-              <button onClick={() => setShowShare(!showShare)} className="text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-1">
+              <button onClick={() => setShowShare(!showShare)} className="text-sm text-gray-600 dark:text-gray-400 hover:text-gold transition-colors flex items-center gap-1">
                 <HiOutlineShare className="w-4 h-4" />
                 {locale === 'fa' ? 'اشتراک‌گذاری' : 'Share'}
               </button>
@@ -332,7 +332,7 @@ export default function ProductDetailPage() {
             {/* Quantity */}
             <div className="mb-6">
               <h3 className="font-bold text-sm mb-3">{dict.product.quantity}</h3>
-              <div className="inline-flex items-center border border-gray-700 rounded-xl">
+              <div className="inline-flex items-center border border-gray-200 dark:border-gray-700 rounded-xl">
                 <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-11 h-11 flex items-center justify-center hover:bg-gray-800 rounded-s-xl transition-colors">
                   <HiMinus className="w-4 h-4" />
                 </button>
@@ -361,15 +361,15 @@ export default function ProductDetailPage() {
             <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
               <div className="flex flex-col items-center text-center gap-1.5">
                 <HiOutlineTruck className="w-5 h-5 text-gold" />
-                <span className="text-[11px] text-gray-400">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
+                <span className="text-[11px] text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
               </div>
               <div className="flex flex-col items-center text-center gap-1.5">
                 <HiOutlineShieldCheck className="w-5 h-5 text-gold" />
-                <span className="text-[11px] text-gray-400">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
+                <span className="text-[11px] text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
               </div>
               <div className="flex flex-col items-center text-center gap-1.5">
                 <HiOutlineRefresh className="w-5 h-5 text-gold" />
-                <span className="text-[11px] text-gray-400">{locale === 'fa' ? 'بازگشت ۷ روزه' : '7-Day Return'}</span>
+                <span className="text-[11px] text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'بازگشت ۷ روزه' : '7-Day Return'}</span>
               </div>
             </div>
           </div>
@@ -449,7 +449,7 @@ export default function ProductDetailPage() {
                 <HiOutlineTruck className="w-6 h-6 text-gold flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold mb-1">{locale === 'fa' ? 'روش‌های ارسال' : 'Shipping Methods'}</h3>
-                  <ul className="text-sm text-gray-400 space-y-1.5">
+                  <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
                     <li>{locale === 'fa' ? '• ارسال رایگان برای سفارش‌های بالای ۵۰۰ هزار تومان (۵ تا ۷ روز)' : '• Free shipping on orders over 500K (5-7 days)'}</li>
                     <li>{locale === 'fa' ? '• ارسال عادی: ۲۵,۰۰۰ تومان (۳ تا ۵ روز)' : '• Standard: 25,000T (3-5 days)'}</li>
                     <li>{locale === 'fa' ? '• ارسال سریع: ۴۵,۰۰۰ تومان (۱ تا ۲ روز)' : '• Express: 45,000T (1-2 days)'}</li>
@@ -460,14 +460,14 @@ export default function ProductDetailPage() {
                 <HiOutlineRefresh className="w-6 h-6 text-gold flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold mb-1">{locale === 'fa' ? 'سیاست بازگشت' : 'Return Policy'}</h3>
-                  <p className="text-sm text-gray-400">{locale === 'fa' ? 'بازگشت کالا تا ۷ روز پس از دریافت، به شرط عدم استفاده و داشتن برچسب. هزینه ارسال بازگشت بر عهده مشتری است.' : 'Returns accepted within 7 days of receipt, provided the item is unused with tags attached. Return shipping costs are the customer\'s responsibility.'}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'بازگشت کالا تا ۷ روز پس از دریافت، به شرط عدم استفاده و داشتن برچسب. هزینه ارسال بازگشت بر عهده مشتری است.' : 'Returns accepted within 7 days of receipt, provided the item is unused with tags attached. Return shipping costs are the customer\'s responsibility.'}</p>
                 </div>
               </div>
               <div className="flex gap-4 items-start">
                 <HiOutlineShieldCheck className="w-6 h-6 text-gold flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold mb-1">{locale === 'fa' ? 'ضمانت اصالت' : 'Authenticity Guarantee'}</h3>
-                  <p className="text-sm text-gray-400">{locale === 'fa' ? 'تمامی محصولات Z7shop دارای ضمانت اصالت و کیفیت هستند.' : 'All Z7shop products come with authenticity and quality guarantee.'}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'تمامی محصولات Z7shop دارای ضمانت اصالت و کیفیت هستند.' : 'All Z7shop products come with authenticity and quality guarantee.'}</p>
                 </div>
               </div>
             </div>

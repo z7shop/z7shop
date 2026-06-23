@@ -55,7 +55,7 @@ export default function ReferralPage() {
           <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <HiOutlineUserAdd className="w-8 h-8 text-gold" />
           </div>
-          <p className="text-sm text-gray-400 mb-3">{fa ? 'کد دعوت شما' : 'Your Referral Code'}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{fa ? 'کد دعوت شما' : 'Your Referral Code'}</p>
           {loading ? (
             <div className="h-14 bg-gray-800/50 rounded-xl animate-pulse" />
           ) : (
@@ -70,7 +70,7 @@ export default function ReferralPage() {
 
           {/* Share buttons */}
           <div className="flex items-center justify-center gap-3 mt-5">
-            <button onClick={copyLink} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-sm text-gray-300 transition-colors">
+            <button onClick={copyLink} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-sm text-gray-700 dark:text-gray-300 transition-colors">
               <HiOutlineClipboardCopy className="w-4 h-4" />
               {fa ? 'کپی لینک' : 'Copy Link'}
             </button>
@@ -131,7 +131,7 @@ export default function ReferralPage() {
                 <span className="w-7 h-7 rounded-lg bg-gold/10 text-gold flex items-center justify-center text-sm font-bold flex-shrink-0">
                   {fa ? item.step : item.step_en}
                 </span>
-                <p className="text-sm text-gray-400 pt-1">{item.text}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 pt-1">{item.text}</p>
               </div>
             ))}
           </div>

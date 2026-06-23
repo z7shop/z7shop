@@ -79,7 +79,7 @@ export default function ProductCard({ product }: Props) {
   const hasSecondImage = images.length > 1;
 
   return (
-    <div className="group product-card-glow overflow-hidden rounded-xl md:rounded-2xl bg-white/[0.03] dark:bg-white/[0.03] bg-white backdrop-blur-sm border border-white/[0.06] dark:border-white/[0.06] border-gray-100 hover:border-gold/30 transition-all duration-500">
+    <div className="group product-card-glow overflow-hidden rounded-xl md:rounded-2xl bg-white dark:bg-white/[0.03] backdrop-blur-sm border border-gray-200 dark:border-white/[0.06] hover:border-gold/30 transition-all duration-500">
       <Link href={`/products/${product.id}`} className="block relative overflow-hidden">
         <div className="aspect-[3/4] bg-gradient-to-br from-gray-800/60 to-gray-900/80 flex items-center justify-center relative overflow-hidden">
           {images.length > 0 ? (

@@ -50,7 +50,7 @@ export default function BlogPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
             <h1 className="text-3xl md:text-5xl font-black mb-3">{blog.title}</h1>
-            <p className="text-gray-400 text-sm md:text-lg">{blog.subtitle}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm md:text-lg">{blog.subtitle}</p>
           </div>
         </section>
 
@@ -123,7 +123,7 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h2 className="font-bold text-lg mb-2 group-hover:text-gold transition-colors line-clamp-2">{title}</h2>
-                      <p className="text-sm text-gray-400 line-clamp-2 mb-3">{excerpt}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">{excerpt}</p>
                       {tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
                           {tags.slice(0, 3).map(t => (

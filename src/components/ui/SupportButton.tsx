@@ -256,7 +256,7 @@ export default function SupportButton() {
     <div className="fixed bottom-6 start-4 md:start-6 z-40">
       {open && (
         <div className="absolute bottom-16 start-0 mb-2 w-[310px] md:w-[350px] animate-fade-in">
-          <div className="bg-[#111115] rounded-2xl shadow-2xl border border-white/[0.08] overflow-hidden flex flex-col" style={{ height: 460 }}>
+          <div className="bg-white dark:bg-[#111115] rounded-2xl shadow-2xl border border-white/[0.08] overflow-hidden flex flex-col" style={{ height: 460 }}>
             {/* Header */}
             <div className="bg-gradient-to-r from-gold/20 to-gold/5 px-4 py-3 flex items-center justify-between border-b border-white/[0.06] flex-shrink-0">
               <div className="flex items-center gap-2.5">
@@ -267,7 +267,7 @@ export default function SupportButton() {
                   <p className="text-sm font-bold text-white">{locale === 'fa' ? 'پشتیبانی آنلاین' : 'Live Support'}</p>
                   <div className="flex items-center gap-1.5">
                     <span className={`w-1.5 h-1.5 rounded-full ${chatStatus === 'active' ? 'bg-green-400' : chatStatus === 'waiting' ? 'bg-yellow-400 animate-pulse' : 'bg-gray-500'}`} />
-                    <span className="text-[10px] text-gray-400">
+                    <span className="text-[10px] text-gray-600 dark:text-gray-400">
                       {chatStatus === 'active' ? (locale === 'fa' ? 'متصل به پشتیبان' : 'Connected') :
                        chatStatus === 'waiting' ? (locale === 'fa' ? 'در انتظار پشتیبان...' : 'Waiting...') :
                        (locale === 'fa' ? 'ربات پاسخگو' : 'Auto-reply')}
@@ -277,11 +277,11 @@ export default function SupportButton() {
               </div>
               <div className="flex items-center gap-1">
                 {session && (
-                  <button onClick={toggleHistory} className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${showHistory ? 'bg-gold/20 text-gold' : 'hover:bg-white/10 text-gray-400'}`} title={locale === 'fa' ? 'تاریخچه' : 'History'}>
+                  <button onClick={toggleHistory} className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${showHistory ? 'bg-gold/20 text-gold' : 'hover:bg-white/10 text-gray-600 dark:text-gray-400'}`} title={locale === 'fa' ? 'تاریخچه' : 'History'}>
                     <HiOutlineClock className="w-4 h-4" />
                   </button>
                 )}
-                <button onClick={() => setOpen(false)} className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-gray-400">
+                <button onClick={() => setOpen(false)} className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400">
                   <HiOutlineX className="w-5 h-5" />
                 </button>
               </div>
@@ -301,7 +301,7 @@ export default function SupportButton() {
                       onClick={() => setExpandedHistory(expandedHistory === h.id ? null : h.id)}
                       className="w-full px-3 py-2.5 flex items-center justify-between hover:bg-white/[0.03] transition-colors"
                     >
-                      <span className="text-xs text-gray-400">{formatDate(h.updated_at)}</span>
+                      <span className="text-xs text-gray-600 dark:text-gray-400">{formatDate(h.updated_at)}</span>
                       <span className="text-[10px] text-gray-500">{h.messages.length} {locale === 'fa' ? 'پیام' : 'msgs'}</span>
                     </button>
                     {expandedHistory === h.id && (
@@ -314,7 +314,7 @@ export default function SupportButton() {
                               <div className={`max-w-[80%] px-2.5 py-1.5 rounded-xl text-xs ${
                                 m.sender === 'user' ? 'bg-gold/80 text-white rounded-br-sm' :
                                 m.sender === 'admin' ? 'bg-blue-500/10 text-blue-200 rounded-bl-sm' :
-                                'bg-white/[0.05] text-gray-400 rounded-bl-sm'
+                                'bg-white/[0.05] text-gray-600 dark:text-gray-400 rounded-bl-sm'
                               }`}>
                                 {m.image && <Image src={m.image} alt="" width={200} height={96} className="max-w-full rounded-lg mb-1 max-h-24 object-cover" />}
                                 {m.message && <span>{m.message}</span>}
@@ -343,7 +343,7 @@ export default function SupportButton() {
                             ? 'bg-gold text-white rounded-br-md'
                             : msg.sender === 'admin'
                             ? 'bg-blue-500/10 text-blue-100 border border-blue-500/20 rounded-bl-md'
-                            : 'bg-white/[0.06] text-gray-300 rounded-bl-md'
+                            : 'bg-white/[0.06] text-gray-700 dark:text-gray-300 rounded-bl-md'
                         }`}>
                           {msg.sender === 'admin' && (
                             <p className="text-[10px] text-blue-400 font-medium mb-1">{locale === 'fa' ? 'پشتیبان' : 'Support'}</p>
@@ -418,7 +418,7 @@ export default function SupportButton() {
                       <button
                         onClick={() => fileInputRef.current?.click()}
                         disabled={uploading}
-                        className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold/30 disabled:opacity-30 transition-all flex-shrink-0"
+                        className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gold hover:border-gold/30 disabled:opacity-30 transition-all flex-shrink-0"
                         title={locale === 'fa' ? 'ارسال تصویر' : 'Send Image'}
                       >
                         <HiOutlinePhotograph className="w-4 h-4" />

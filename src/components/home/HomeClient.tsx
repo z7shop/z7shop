@@ -69,7 +69,7 @@ function CouponChecker({ locale }: { locale: string }) {
           onChange={(e) => setCode(e.target.value.toUpperCase())}
           onKeyDown={(e) => e.key === 'Enter' && check()}
           placeholder={locale === 'fa' ? 'مثلاً WELCOME10' : 'e.g. WELCOME10'}
-          className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-gold/20 text-white placeholder-gray-500 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none text-sm text-center tracking-widest font-mono"
+          className="flex-1 px-4 py-3 rounded-xl bg-gray-100 dark:bg-white/10 border border-gold/20 text-gray-900 dark:text-white placeholder-gray-500 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none text-sm text-center tracking-widest font-mono"
           dir="ltr"
         />
         <button onClick={check} disabled={checking} className="btn-gold px-5 py-3 text-sm whitespace-nowrap">
@@ -157,7 +157,7 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
         <HeroSlider />
 
         {/* Features Strip */}
-        <section className="relative border-b border-gray-800/30 bg-[#0d0d10]">
+        <section className="relative border-b border-gray-200 dark:border-gray-800/30 bg-gray-50 dark:bg-[#0d0d10]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex overflow-x-auto scrollbar-hide md:grid md:grid-cols-4 gap-2 md:gap-4 -mx-4 px-4 md:mx-0 md:px-0 py-4 md:py-6">
               {features.map((f, i) => (
@@ -255,7 +255,7 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
 
         {/* Coupon Banner */}
         <section className="parallax-section relative overflow-hidden py-12 md:py-20">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d10] via-[#111115] to-[#0d0d10]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 dark:from-[#0d0d10] dark:via-[#111115] dark:to-[#0d0d10]" />
           <div className="absolute inset-0">
             <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-gold/5 blur-[120px]" />
             <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-gold/3 blur-[100px]" />
@@ -272,7 +272,7 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
               <h2 className="text-2xl md:text-4xl font-black text-gradient mb-3 md:mb-4">
                 {locale === 'fa' ? 'کد تخفیف دارید؟' : 'Got a Coupon Code?'}
               </h2>
-              <p className="text-gray-400 mb-6 md:mb-8 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 mb-6 md:mb-8 text-sm md:text-base max-w-md mx-auto leading-relaxed">
                 {locale === 'fa' ? 'کد تخفیف خود را وارد کنید و از جزئیات آن مطلع شوید' : 'Enter your coupon code to see the discount details'}
               </p>
               <CouponChecker locale={locale} />
@@ -301,7 +301,7 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
 
         {/* Why Z7shop */}
         <section className="relative overflow-hidden py-12 md:py-20">
-          <div className="absolute inset-0 bg-[#0b0b0e]" />
+          <div className="absolute inset-0 bg-gray-50 dark:bg-[#0b0b0e]" />
           <div className="absolute inset-0">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-gold/5 blur-[150px]" />
           </div>
@@ -318,7 +318,7 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gold/10 border border-gold/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 group-hover:border-gold/25 group-hover:scale-110 transition-all duration-300">
                       <s.icon className="w-6 h-6 md:w-7 md:h-7 text-gold" />
                     </div>
-                    <p className="text-2xl md:text-3xl font-black text-white mb-1">{s.value}</p>
+                    <p className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-1">{s.value}</p>
                     <p className="text-xs md:text-sm text-gray-500">{s.label}</p>
                   </div>
                 ))}
@@ -338,7 +338,7 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
 
         {/* Newsletter */}
         <section className="parallax-section relative overflow-hidden py-12 md:py-24">
-          <div className="absolute inset-0 bg-[#0b0b0e]" />
+          <div className="absolute inset-0 bg-gray-50 dark:bg-[#0b0b0e]" />
           <div className="absolute inset-0">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-gold/5 blur-[120px]" />
           </div>
@@ -351,14 +351,14 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
                 <HiOutlineMail className="w-7 h-7 text-gold" />
               </div>
               <h2 className="text-xl md:text-3xl font-bold mb-2 md:mb-3">{dict.newsletter.title}</h2>
-              <p className="text-gray-400 mb-6 md:mb-8 text-sm md:text-base leading-relaxed">{dict.newsletter.subtitle}</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-6 md:mb-8 text-sm md:text-base leading-relaxed">{dict.newsletter.subtitle}</p>
               <div className="flex flex-col sm:flex-row gap-2.5">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={dict.newsletter.placeholder}
-                  className="flex-1 px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none text-white placeholder-gray-500 transition-all text-sm"
+                  className="flex-1 px-5 py-3.5 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-300 dark:border-white/10 focus:border-gold focus:ring-2 focus:ring-gold/20 focus:outline-none text-gray-900 dark:text-white placeholder-gray-500 transition-all text-sm"
                   dir="ltr"
                   onKeyDown={(e) => e.key === 'Enter' && handleNewsletter()}
                 />

@@ -41,7 +41,7 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-10 md:mt-20 overflow-hidden">
-      <div className="absolute inset-0 bg-[#08080a]" />
+      <div className="absolute inset-0 bg-gray-100 dark:bg-[#08080a]" />
 
       {/* Trust badges */}
       <div className="relative">
@@ -54,7 +54,7 @@ export default function Footer() {
                   <g.icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm font-semibold text-white/90">{g.title}</p>
+                  <p className="text-xs md:text-sm font-semibold text-gray-900 dark:text-white/90">{g.title}</p>
                   <p className="text-[10px] md:text-xs text-gray-500 mt-0.5 hidden sm:block">{g.desc}</p>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export default function Footer() {
 
       {/* Separator */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-800/50 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-800/50 to-transparent" />
       </div>
 
       {/* Main content */}
@@ -85,7 +85,7 @@ export default function Footer() {
                 { icon: FaTelegram, hover: 'hover:bg-[#0088cc]' },
                 { icon: FaTwitter, hover: 'hover:bg-[#1DA1F2]' },
               ].map((s, i) => (
-                <a key={i} href="#" className={`w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 ${s.hover} hover:border-transparent hover:scale-110 transition-all duration-300 text-gray-500 hover:text-white`}>
+                <a key={i} href="#" className={`w-9 h-9 flex items-center justify-center rounded-xl bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/5 ${s.hover} hover:border-transparent hover:scale-110 transition-all duration-300 text-gray-500 hover:text-white`}>
                   <s.icon className="w-3.5 h-3.5" />
                 </a>
               ))}
@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="md:col-span-2">
-            <h3 className="text-[11px] font-bold text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
+            <h3 className="text-[11px] font-bold text-gray-800 dark:text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
               {dict.footer.quickLinks}
             </h3>
             <ul className="space-y-2.5">
@@ -111,7 +111,7 @@ export default function Footer() {
 
           {/* Account */}
           <div className="md:col-span-2">
-            <h3 className="text-[11px] font-bold text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
+            <h3 className="text-[11px] font-bold text-gray-800 dark:text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
               {locale === 'fa' ? 'حساب کاربری' : 'Account'}
             </h3>
             <ul className="space-y-2.5">
@@ -128,7 +128,7 @@ export default function Footer() {
 
           {/* Info */}
           <div className="md:col-span-2">
-            <h3 className="text-[11px] font-bold text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
+            <h3 className="text-[11px] font-bold text-gray-800 dark:text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
               {locale === 'fa' ? 'اطلاعات' : 'Information'}
             </h3>
             <ul className="space-y-2.5">
@@ -145,29 +145,29 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="col-span-2 md:col-span-3">
-            <h3 className="text-[11px] font-bold text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
+            <h3 className="text-[11px] font-bold text-gray-800 dark:text-white/80 uppercase tracking-widest mb-4 pb-2 border-b border-gold/10 inline-block">
               {dict.footer.contact}
             </h3>
             <ul className="space-y-3">
               <li>
                 <a href="mailto:Z7shop.ir@gmail.com" className="flex items-center gap-3 group">
-                  <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 group-hover:border-gold/20 group-hover:bg-gold/10 transition-all duration-300">
+                  <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/5 group-hover:border-gold/20 group-hover:bg-gold/10 transition-all duration-300">
                     <HiOutlineMail className="w-4 h-4 text-gold/70 group-hover:text-gold transition-colors" />
                   </div>
-                  <span className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors">{dict.footer.email}</span>
+                  <span className="text-xs text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">{dict.footer.email}</span>
                 </a>
               </li>
               <li>
                 <a href="tel:02112345678" className="flex items-center gap-3 group">
-                  <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 group-hover:border-gold/20 group-hover:bg-gold/10 transition-all duration-300">
+                  <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/5 group-hover:border-gold/20 group-hover:bg-gold/10 transition-all duration-300">
                     <HiOutlinePhone className="w-4 h-4 text-gold/70 group-hover:text-gold transition-colors" />
                   </div>
-                  <span className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors" dir="ltr">{dict.footer.phone}</span>
+                  <span className="text-xs text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors" dir="ltr">{dict.footer.phone}</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 flex-shrink-0">
+                  <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/5 flex-shrink-0">
                     <HiOutlineLocationMarker className="w-4 h-4 text-gold/70" />
                   </div>
                   <span className="text-xs text-gray-500 leading-5">{dict.footer.address}</span>
@@ -181,7 +181,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-800/50 to-transparent" />
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-800/50 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">

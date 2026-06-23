@@ -110,14 +110,14 @@ export default function TermsPage() {
       <Header />
       <main>
         <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-[#0a0a0d]" />
+          <div className="absolute inset-0 bg-gray-100 dark:bg-[#0a0a0d]" />
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,168,76,0.1), transparent)' }} />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <h1 className="text-3xl md:text-5xl font-black text-white mb-4 animate-slide-up">
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 animate-slide-up">
               {fa ? 'قوانین و ' : 'Terms & '}
               <span className="text-gradient">{fa ? 'مقررات' : 'Conditions'}</span>
             </h1>
-            <p className="text-gray-400 text-sm md:text-lg animate-slide-up-delay-1">
+            <p className="text-gray-600 dark:text-gray-400 text-sm md:text-lg animate-slide-up-delay-1">
               {fa ? 'لطفاً قبل از خرید این شرایط را مطالعه فرمایید' : 'Please read these terms before making a purchase'}
             </p>
           </div>
@@ -133,7 +133,7 @@ export default function TermsPage() {
                 </h2>
                 <ul className="space-y-3">
                   {section.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm text-gray-400 leading-relaxed">
+                    <li key={j} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                       <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 flex-shrink-0" />
                       {item}
                     </li>

@@ -37,7 +37,7 @@ export default function WishlistPage() {
         <div className="text-center py-10 text-gray-500">{dict.common.loading}</div>
       ) : items.length === 0 ? (
         <div className="text-center py-16">
-          <HiOutlineHeart className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+          <HiOutlineHeart className="w-16 h-16 mx-auto text-gray-700 dark:text-gray-300 mb-4" />
           <p className="text-gray-500">{locale === 'fa' ? 'لیست علاقه‌مندی‌ها خالی است' : 'Wishlist is empty'}</p>
         </div>
       ) : (

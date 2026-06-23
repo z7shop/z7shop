@@ -52,7 +52,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-64 bg-gray-900 text-white flex-shrink-0 hidden md:block">
         <div className="p-6">
           <Link href="/" className="text-2xl font-bold text-gold">{dict.common.brand}</Link>
-          <p className="text-xs text-gray-400 mt-1">{dict.adminPanel.title}</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{dict.adminPanel.title}</p>
         </div>
         <nav className="px-3 space-y-1">
           {links.map(l => (
@@ -68,12 +68,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
         <div className="mt-auto p-4 border-t border-gray-800 absolute bottom-0 w-64">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-sm text-gray-400 hover:text-white flex items-center gap-1">
+            <Link href="/" className="text-sm text-gray-600 dark:text-gray-400 hover:text-white flex items-center gap-1">
               <HiOutlineArrowLeft className="w-4 h-4" />
               {dict.common.home}
             </Link>
             <div className="flex gap-2">
-              <button onClick={toggleLocale} className="text-xs text-gray-400 hover:text-white">{dict.common.language}</button>
+              <button onClick={toggleLocale} className="text-xs text-gray-600 dark:text-gray-400 hover:text-white">{dict.common.language}</button>
               <button onClick={toggleTheme} className="text-gray-400 hover:text-white">
                 {theme === 'light' ? <HiOutlineMoon className="w-4 h-4" /> : <HiOutlineSun className="w-4 h-4" />}
               </button>

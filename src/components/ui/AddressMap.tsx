@@ -67,7 +67,7 @@ export default function AddressMap({ onLocationSelect }: AddressMapProps) {
 
   return (
     <div className="space-y-2">
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-gray-600 dark:text-gray-400">
         {locale === 'fa' ? 'روی نقشه کلیک کنید تا آدرس تعیین شود' : 'Click on the map to set your address'}
       </p>
       <div className="rounded-xl overflow-hidden border border-gray-700" style={{ height: 300 }}>

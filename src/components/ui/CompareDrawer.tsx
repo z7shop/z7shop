@@ -88,7 +88,7 @@ export default function CompareDrawer() {
               <h2 className="text-xl font-bold text-gold">
                 {locale === 'fa' ? 'مقایسه محصولات' : 'Compare Products'}
               </h2>
-              <button onClick={() => setShowModal(false)} className="p-2 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white">
+              <button onClick={() => setShowModal(false)} className="p-2 rounded-lg hover:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white">
                 <HiOutlineX className="w-5 h-5" />
               </button>
             </div>
@@ -119,7 +119,7 @@ export default function CompareDrawer() {
                 </thead>
                 <tbody className="text-sm">
                   <tr className="border-t border-gray-800">
-                    <td className="py-3 pe-4 text-gray-400 text-xs">{locale === 'fa' ? 'قیمت' : 'Price'}</td>
+                    <td className="py-3 pe-4 text-gray-600 dark:text-gray-400 text-xs">{locale === 'fa' ? 'قیمت' : 'Price'}</td>
                     {products.map((p) => (
                       <td key={p.id} className="py-3 px-2 text-center">
                         {p.discount_price ? (
@@ -134,7 +134,7 @@ export default function CompareDrawer() {
                     ))}
                   </tr>
                   <tr className="border-t border-gray-800">
-                    <td className="py-3 pe-4 text-gray-400 text-xs">{locale === 'fa' ? 'موجودی' : 'Stock'}</td>
+                    <td className="py-3 pe-4 text-gray-600 dark:text-gray-400 text-xs">{locale === 'fa' ? 'موجودی' : 'Stock'}</td>
                     {products.map((p) => (
                       <td key={p.id} className="py-3 px-2 text-center">
                         {p.stock > 0 ? (
@@ -146,7 +146,7 @@ export default function CompareDrawer() {
                     ))}
                   </tr>
                   <tr className="border-t border-gray-800">
-                    <td className="py-3 pe-4 text-gray-400 text-xs">{locale === 'fa' ? 'سایزها' : 'Sizes'}</td>
+                    <td className="py-3 pe-4 text-gray-600 dark:text-gray-400 text-xs">{locale === 'fa' ? 'سایزها' : 'Sizes'}</td>
                     {products.map((p) => (
                       <td key={p.id} className="py-3 px-2 text-center">
                         <div className="flex flex-wrap justify-center gap-1">
@@ -158,7 +158,7 @@ export default function CompareDrawer() {
                     ))}
                   </tr>
                   <tr className="border-t border-gray-800">
-                    <td className="py-3 pe-4 text-gray-400 text-xs">{locale === 'fa' ? 'رنگ‌ها' : 'Colors'}</td>
+                    <td className="py-3 pe-4 text-gray-600 dark:text-gray-400 text-xs">{locale === 'fa' ? 'رنگ‌ها' : 'Colors'}</td>
                     {products.map((p) => (
                       <td key={p.id} className="py-3 px-2 text-center">
                         <div className="flex flex-wrap justify-center gap-1.5">
@@ -170,10 +170,10 @@ export default function CompareDrawer() {
                     ))}
                   </tr>
                   <tr className="border-t border-gray-800">
-                    <td className="py-3 pe-4 text-gray-400 text-xs">{locale === 'fa' ? 'توضیحات' : 'Description'}</td>
+                    <td className="py-3 pe-4 text-gray-600 dark:text-gray-400 text-xs">{locale === 'fa' ? 'توضیحات' : 'Description'}</td>
                     {products.map((p) => (
                       <td key={p.id} className="py-3 px-2 text-center">
-                        <p className="text-xs text-gray-300 line-clamp-3 max-w-[200px] mx-auto">
+                        <p className="text-xs text-gray-700 dark:text-gray-300 line-clamp-3 max-w-[200px] mx-auto">
                           {locale === 'fa' ? p.description_fa : p.description_en}
                         </p>
                       </td>

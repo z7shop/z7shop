@@ -8,7 +8,7 @@ export default function NotFound() {
   const fa = locale === 'fa';
 
   return (
-    <div className="min-h-screen bg-[#0c0c0f] flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#0c0c0f] flex items-center justify-center px-4 relative overflow-hidden">
       <div className="absolute inset-0" style={{
         backgroundImage: 'radial-gradient(ellipse 50% 30% at 50% 50%, rgba(201, 168, 76, 0.06), transparent)'
       }} />
@@ -41,7 +41,7 @@ export default function NotFound() {
 
         <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
 
-        <h2 className="text-xl md:text-3xl font-bold mb-3 text-white">
+        <h2 className="text-xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-white">
           {fa ? 'صفحه مورد نظر پیدا نشد' : 'Page Not Found'}
         </h2>
         <p className="text-gray-500 text-sm mb-10 max-w-md mx-auto leading-relaxed">

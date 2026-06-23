@@ -53,7 +53,7 @@ export default function ReviewCard({ userName, rating, title, comment, date }: P
           </div>
           <StarRating rating={rating} size="sm" />
           {title && <p className="font-medium text-sm mt-2">{title}</p>}
-          {comment && <p className="text-sm text-gray-400 mt-1 leading-6">{comment}</p>}
+          {comment && <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-6">{comment}</p>}
         </div>
       </div>
     </div>
