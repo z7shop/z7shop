@@ -166,8 +166,8 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
                     <f.icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                   </div>
                   <div className="min-w-0 relative z-10">
-                    <p className="font-bold text-xs md:text-sm whitespace-nowrap">{f.title}</p>
-                    <p className="text-[10px] md:text-xs text-gray-500 mt-0.5 whitespace-nowrap">{f.desc}</p>
+                    <p className="font-bold text-xs md:text-sm whitespace-nowrap text-gray-900 dark:text-white">{f.title}</p>
+                    <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-500 mt-0.5 whitespace-nowrap">{f.desc}</p>
                   </div>
                 </div>
               ))}
