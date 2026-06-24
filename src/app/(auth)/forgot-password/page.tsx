@@ -48,6 +48,8 @@ export default function ForgotPasswordPage() {
       const data = await res.json();
       if (data.error === 'EMAIL_NOT_FOUND') {
         toast.error(fa ? 'حسابی با این ایمیل وجود ندارد' : 'No account found with this email');
+      } else if (data.error === 'EMAIL_SEND_FAILED') {
+        toast.error(fa ? 'خطا در ارسال ایمیل. لطفاً چند دقیقه بعد دوباره تلاش کنید' : 'Failed to send email. Please try again in a few minutes');
       } else {
         toast.error(fa ? 'خطا در ارسال' : 'Error sending code');
       }

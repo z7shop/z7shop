@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     const code = String(Math.floor(100000 + Math.random() * 900000));
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
     const id = uuidv4();
 
     await dbRun(
@@ -48,7 +48,11 @@ export async function POST(req: NextRequest) {
       id, email.trim().toLowerCase(), code, name.trim(), hashedPassword, phone || '', expiresAt
     );
 
-    sendVerificationEmail(email.trim(), code);
+    const sent = await sendVerificationEmail(email.trim(), code);
+    if (!sent) {
+      await dbRun('DELETE FROM verification_codes WHERE id = ?', id);
+      return NextResponse.json({ error: 'EMAIL_SEND_FAILED' }, { status: 500 });
+    }
     return NextResponse.json({ sent: true });
   }
 

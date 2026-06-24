@@ -18,9 +18,15 @@ export default function RegisterPage() {
   const [code, setCode] = useState('');
   const [countdown, setCountdown] = useState(0);
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [captchaA] = useState(() => Math.floor(Math.random() * 9) + 1);
-  const [captchaB] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaA, setCaptchaA] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaB, setCaptchaB] = useState(() => Math.floor(Math.random() * 9) + 1);
   const [captchaAnswer, setCaptchaAnswer] = useState('');
+
+  const refreshCaptcha = () => {
+    setCaptchaA(Math.floor(Math.random() * 9) + 1);
+    setCaptchaB(Math.floor(Math.random() * 9) + 1);
+    setCaptchaAnswer('');
+  };
 
   const startCountdown = () => {
     setCountdown(60);
@@ -55,6 +61,7 @@ export default function RegisterPage() {
     }
     if (parseInt(captchaAnswer) !== captchaA + captchaB) {
       errs.captcha = locale === 'fa' ? 'پاسخ امنیتی اشتباه است' : 'Wrong security answer';
+      refreshCaptcha();
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -94,6 +101,7 @@ export default function RegisterPage() {
     } else {
       const data = await res.json();
       toast.error(errorMessages[data.error] || dict.common.error);
+      refreshCaptcha();
     }
     setLoading(false);
   };

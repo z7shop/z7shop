@@ -13,15 +13,22 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [captchaA] = useState(() => Math.floor(Math.random() * 9) + 1);
-  const [captchaB] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaA, setCaptchaA] = useState(() => Math.floor(Math.random() * 9) + 1);
+  const [captchaB, setCaptchaB] = useState(() => Math.floor(Math.random() * 9) + 1);
   const [captchaAnswer, setCaptchaAnswer] = useState('');
   const [captchaError, setCaptchaError] = useState('');
+
+  const refreshCaptcha = () => {
+    setCaptchaA(Math.floor(Math.random() * 9) + 1);
+    setCaptchaB(Math.floor(Math.random() * 9) + 1);
+    setCaptchaAnswer('');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (parseInt(captchaAnswer) !== captchaA + captchaB) {
       setCaptchaError(locale === 'fa' ? 'پاسخ امنیتی اشتباه است' : 'Wrong security answer');
+      refreshCaptcha();
       return;
     }
     setCaptchaError('');
@@ -35,6 +42,7 @@ export default function LoginPage() {
 
     if (result?.error) {
       toast.error(dict.auth.invalidCredentials);
+      refreshCaptcha();
     } else {
       toast.success(locale === 'fa' ? 'خوش آمدید!' : 'Welcome!');
       const sessionRes = await fetch('/api/auth/session');

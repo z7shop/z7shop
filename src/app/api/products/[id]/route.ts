@@ -91,7 +91,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     );
 
     for (const alert of alerts) {
-      sendStockAlertEmail(alert.email as string, oldProduct.name_fa as string, oldProduct.name_en as string, params.id);
+      await sendStockAlertEmail(alert.email as string, oldProduct.name_fa as string, oldProduct.name_en as string, params.id);
       if (alert.user_id) {
         await createNotification(alert.user_id as string, 'stock',
           'محصول موجود شد!', 'Back in Stock!',
