@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLocale } from '@/hooks/useLocale';
 import { formatPrice, formatPercent } from '@/i18n';
 import type { Product } from '@/types';
@@ -80,32 +81,59 @@ export default function SearchModal({ open, onClose }: Props) {
           )}
 
           {!loading && results.length > 0 && (
-            <div className="max-h-[60vh] overflow-y-auto">
+            <div className="max-h-[60vh] overflow-y-auto divide-y divide-gray-100 dark:divide-gray-800/50">
               {results.map((p) => {
                 const name = locale === 'fa' ? p.name_fa : p.name_en;
                 const price = p.discount_price || p.price;
+                const imgs: string[] = (() => { try { return JSON.parse(p.images || '[]'); } catch { return []; } })();
+                const thumb = imgs[0] || '';
                 return (
                   <Link
                     key={p.id}
                     href={`/products/${p.id}`}
                     onClick={onClose}
-                    className="flex items-center gap-4 px-5 py-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                    className="flex items-center gap-4 px-5 py-3.5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-lg opacity-40">👔</span>
+                    <div className="w-14 h-14 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 flex-shrink-0">
+                      {thumb ? (
+                        <Image src={thumb} alt={name} width={56} height={56} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                          {locale === 'fa' ? 'بدون عکس' : 'No img'}
+                        </div>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-sm line-clamp-1">{name}</p>
-                      <p className="text-gold text-sm font-bold mt-0.5">{formatPrice(price, locale)} {dict.common.currency}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-gold text-sm font-bold">{formatPrice(price, locale)} {dict.common.currency}</span>
+                        {p.discount_price && p.discount_price < p.price && (
+                          <span className="text-xs text-gray-500 line-through">{formatPrice(p.price, locale)}</span>
+                        )}
+                      </div>
                     </div>
                     {p.discount_price && p.discount_price < p.price && (
-                      <span className="text-xs bg-red-500/10 text-red-500 px-2 py-0.5 rounded-full">
+                      <span className="text-xs bg-red-500/10 text-red-500 px-2 py-1 rounded-full font-bold">
                         {formatPercent(Math.round(((p.price - p.discount_price) / p.price) * 100), locale)}
+                      </span>
+                    )}
+                    {p.stock === 0 && (
+                      <span className="text-[10px] bg-gray-500/10 text-gray-500 px-2 py-0.5 rounded-full">
+                        {locale === 'fa' ? 'ناموجود' : 'Out'}
                       </span>
                     )}
                   </Link>
                 );
               })}
+              {results.length >= 6 && (
+                <Link
+                  href={`/products?search=${encodeURIComponent(query)}`}
+                  onClick={onClose}
+                  className="block text-center py-3.5 text-sm text-gold hover:bg-gold/5 transition-colors font-medium"
+                >
+                  {locale === 'fa' ? 'مشاهده همه نتایج' : 'View all results'}
+                </Link>
+              )}
             </div>
           )}
 
