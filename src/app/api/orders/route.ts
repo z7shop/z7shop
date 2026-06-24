@@ -77,21 +77,5 @@ export async function POST(req: NextRequest) {
 
   await dbRun('DELETE FROM cart WHERE user_id = ?', userId);
 
-  const loyaltyPoints = Math.floor(total / 10000);
-  if (loyaltyPoints > 0) {
-    await dbRun(
-      'INSERT INTO loyalty_points (id, user_id, points, type, description_fa, description_en, order_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      uuidv4(), userId, loyaltyPoints, 'earn', 'امتیاز خرید', 'Order Points', orderId
-    );
-
-    await dbRun(
-      'INSERT INTO notifications (id, user_id, type, title_fa, title_en, message_fa, message_en, link) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-      uuidv4(), userId, 'points',
-      'امتیاز کسب شد', 'Points Earned',
-      `${loyaltyPoints} امتیاز از خرید شما اضافه شد`, `You earned ${loyaltyPoints} points from your order`,
-      '/panel/loyalty'
-    );
-  }
-
   return NextResponse.json({ id: orderId, total }, { status: 201 });
 }

@@ -54,6 +54,14 @@ export async function POST(req: NextRequest) {
         `Order purchase points`,
         payment.order_id
       );
+
+      await dbRun(
+        'INSERT INTO notifications (id, user_id, type, title_fa, title_en, message_fa, message_en, link) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        uuidv4(), userId, 'points',
+        'امتیاز کسب شد', 'Points Earned',
+        `${points} امتیاز از خرید شما اضافه شد`, `You earned ${points} points from your order`,
+        '/panel/loyalty'
+      );
     }
 
     const updated = await dbGet('SELECT * FROM payments WHERE id = ?', payment_id);
