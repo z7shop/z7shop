@@ -99,6 +99,39 @@ html.splash-active body {
     @apply text-xs font-medium px-2.5 py-1 rounded-full;
   }
 
+  .floating-badge {
+    background-color: #F8F8F8;
+    color: #1f2937;
+    border: 1px solid #D4AF37;
+  }
+  :is(.dark) .floating-badge {
+    background-color: rgba(17, 24, 39, 0.8);
+    color: #d1d5db;
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+
+  .trust-badge {
+    background-color: #F8F8F8;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+  }
+  :is(.dark) .trust-badge {
+    background-color: rgba(31, 41, 55, 0.3);
+    color: #9ca3af;
+    border-color: rgba(55, 65, 81, 0.3);
+  }
+
+  .surface-card {
+    background-color: #F8F8F8;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+  }
+  :is(.dark) .surface-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #f3f4f6;
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
   .badge-pending {
     @apply badge bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
   }

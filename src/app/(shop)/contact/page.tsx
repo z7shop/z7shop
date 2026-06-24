@@ -93,7 +93,7 @@ export default function ContactPage() {
         <section className="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 relative z-10 mb-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {contactInfo.map((item, i) => (
-              <div key={i} className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-4 md:p-5 text-center hover:border-gold/20 transition-all duration-300 group">
+              <div key={i} className="surface-card backdrop-blur-sm rounded-2xl p-4 md:p-5 text-center hover:border-gold/20 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                   <item.icon className="w-5 h-5 text-gold" />
                 </div>
@@ -113,7 +113,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-5 gap-8">
             {/* Contact Form */}
             <div className="md:col-span-3">
-              <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8">
+              <div className="surface-card rounded-2xl p-6 md:p-8">
                 <h2 className="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
                   <HiOutlinePaperAirplane className="w-5 h-5 text-gold rtl:-scale-x-100" />
                   {fa ? 'ارسال پیام' : 'Send a Message'}
@@ -148,11 +148,11 @@ export default function ContactPage() {
             {/* Sidebar */}
             <div className="md:col-span-2 space-y-5">
               {/* Social */}
-              <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6">
+              <div className="surface-card rounded-2xl p-6">
                 <h3 className="text-sm font-bold mb-4">{fa ? 'ما را دنبال کنید' : 'Follow Us'}</h3>
                 <div className="flex gap-3">
                   {socials.map((s, i) => (
-                    <a key={i} href="#" className={`w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.06] ${s.color} hover:border-transparent hover:scale-110 transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-white`}>
+                    <a key={i} href="#" className={`w-11 h-11 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/[0.06] ${s.color} hover:border-transparent hover:scale-110 transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-white`}>
                       <s.icon className="w-5 h-5" />
                     </a>
                   ))}
@@ -160,7 +160,7 @@ export default function ContactPage() {
               </div>
 
               {/* Quick answers */}
-              <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6">
+              <div className="surface-card rounded-2xl p-6">
                 <h3 className="text-sm font-bold mb-3">{fa ? 'پاسخ سریع' : 'Quick Answers'}</h3>
                 <p className="text-xs text-gray-500 mb-4 leading-5">
                   {fa ? 'قبل از ارسال پیام، شاید جواب سوالتان را در سوالات متداول پیدا کنید.' : 'Before sending a message, you might find your answer in our FAQ.'}

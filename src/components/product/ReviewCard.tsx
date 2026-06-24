@@ -41,7 +41,7 @@ export default function ReviewCard({ userName, rating, title, comment, date }: P
   };
 
   return (
-    <div className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 animate-fade-in">
+    <div className="surface-card p-4 rounded-xl animate-fade-in">
       <div className="flex items-start gap-3">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 border border-gold/20 flex items-center justify-center text-gold text-xs font-bold flex-shrink-0">
           {initials}

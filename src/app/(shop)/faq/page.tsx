@@ -153,7 +153,7 @@ export default function FaqPage() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder={fa ? 'جستجو در سوالات...' : 'Search questions...'}
-                className="w-full ps-12 pe-4 py-3.5 rounded-2xl bg-white/[0.06] border border-white/[0.08] text-white placeholder-gray-500 focus:outline-none focus:border-gold/40 focus:ring-2 focus:ring-gold/10 transition-all text-sm"
+                className="surface-card w-full ps-12 pe-4 py-3.5 rounded-2xl placeholder-gray-500 focus:outline-none focus:border-gold/40 focus:ring-2 focus:ring-gold/10 transition-all text-sm"
               />
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function FaqPage() {
           <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
             <button
               onClick={() => setActiveCategory(null)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${!activeCategory ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'bg-white/[0.06] text-gray-600 dark:text-gray-400 hover:bg-white/[0.1] border border-white/[0.06]'}`}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${!activeCategory ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'surface-card hover:bg-gray-100 dark:hover:bg-white/[0.1]'}`}
             >
               {fa ? 'همه' : 'All'}
             </button>
@@ -172,7 +172,7 @@ export default function FaqPage() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${activeCategory === cat.id ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'bg-white/[0.06] text-gray-600 dark:text-gray-400 hover:bg-white/[0.1] border border-white/[0.06]'}`}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${activeCategory === cat.id ? 'bg-gold text-white shadow-lg shadow-gold/20' : 'surface-card hover:bg-gray-100 dark:hover:bg-white/[0.1]'}`}
               >
                 <cat.icon className="w-4 h-4" />
                 {fa ? cat.title_fa : cat.title_en}
@@ -222,7 +222,7 @@ export default function FaqPage() {
                             style={{ maxHeight: isOpen ? '500px' : '0', opacity: isOpen ? 1 : 0 }}
                           >
                             <div className="px-5 pb-4 pt-0">
-                              <div className="h-px bg-gray-800/30 mb-3" />
+                              <div className="h-px bg-gray-200 dark:bg-gray-800/30 mb-3" />
                               <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">{fa ? item.a_fa : item.a_en}</p>
                             </div>
                           </div>

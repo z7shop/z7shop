@@ -358,29 +358,29 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
+            <div className="trust-badge grid grid-cols-3 gap-3 p-4 rounded-xl">
               <div className="flex flex-col items-center text-center gap-1.5">
                 <HiOutlineTruck className="w-5 h-5 text-gold" />
-                <span className="text-[11px] text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
+                <span className="text-[11px]">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
               </div>
               <div className="flex flex-col items-center text-center gap-1.5">
                 <HiOutlineShieldCheck className="w-5 h-5 text-gold" />
-                <span className="text-[11px] text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
+                <span className="text-[11px]">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
               </div>
               <div className="flex flex-col items-center text-center gap-1.5">
                 <HiOutlineRefresh className="w-5 h-5 text-gold" />
-                <span className="text-[11px] text-gray-600 dark:text-gray-400">{locale === 'fa' ? 'بازگشت ۷ روزه' : '7-Day Return'}</span>
+                <span className="text-[11px]">{locale === 'fa' ? 'بازگشت ۷ روزه' : '7-Day Return'}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Tabs Section */}
-        <div className="mt-16 border-t border-gray-800/50 pt-8">
-          <div className="flex gap-1 border-b border-gray-800/50 mb-8 overflow-x-auto scrollbar-hide">
+        <div className="mt-16 border-t border-gray-200 dark:border-gray-800/50 pt-8">
+          <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800/50 mb-8 overflow-x-auto scrollbar-hide">
             {tabs.map(tab => (
               <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                className={`px-6 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-all ${activeTab === tab.key ? 'border-gold text-gold' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                className={`px-6 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-all ${activeTab === tab.key ? 'border-gold text-gold' : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
               >{tab.label}</button>
             ))}
           </div>
@@ -388,21 +388,21 @@ export default function ProductDetailPage() {
           {/* Description Tab */}
           {activeTab === 'desc' && (
             <div className="animate-fade-in max-w-3xl">
-              <p className="text-gray-400 leading-8 text-sm">{description}</p>
+              <p className="text-gray-600 dark:text-gray-400 leading-8 text-sm">{description}</p>
               <div className="mt-6 grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
+                <div className="surface-card p-4 rounded-xl">
                   <p className="text-xs text-gray-500 mb-1">{locale === 'fa' ? 'جنس' : 'Material'}</p>
                   <p className="text-sm font-medium">{locale === 'fa' ? 'پنبه و پلی‌استر' : 'Cotton & Polyester'}</p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
+                <div className="surface-card p-4 rounded-xl">
                   <p className="text-xs text-gray-500 mb-1">{locale === 'fa' ? 'فصل' : 'Season'}</p>
                   <p className="text-sm font-medium">{locale === 'fa' ? 'چهار فصل' : 'All Seasons'}</p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
+                <div className="surface-card p-4 rounded-xl">
                   <p className="text-xs text-gray-500 mb-1">{locale === 'fa' ? 'شست‌وشو' : 'Wash'}</p>
                   <p className="text-sm font-medium">{locale === 'fa' ? 'قابل شست‌وشو با ماشین' : 'Machine Washable'}</p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
+                <div className="surface-card p-4 rounded-xl">
                   <p className="text-xs text-gray-500 mb-1">{locale === 'fa' ? 'ساخت' : 'Origin'}</p>
                   <p className="text-sm font-medium">{locale === 'fa' ? 'ترکیه' : 'Turkey'}</p>
                 </div>
@@ -476,7 +476,7 @@ export default function ProductDetailPage() {
 
         {/* Related Products */}
         {related.length > 0 && (
-          <section className="mt-16 border-t border-gray-800/50 pt-8">
+          <section className="mt-16 border-t border-gray-200 dark:border-gray-800/50 pt-8">
             <h2 className="text-2xl font-bold mb-8">{dict.product.related}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {related.map(p => <ProductCard key={p.id} product={p} />)}
@@ -486,7 +486,7 @@ export default function ProductDetailPage() {
 
         {/* Also Bought */}
         {alsoBought.length > 0 && (
-          <section className="mt-16 border-t border-gray-800/50 pt-8">
+          <section className="mt-16 border-t border-gray-200 dark:border-gray-800/50 pt-8">
             <h2 className="text-2xl font-bold mb-8">{locale === 'fa' ? 'مشتریان این محصول، این‌ها رو هم خریدن' : 'Customers Also Bought'}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {alsoBought.map(p => <ProductCard key={p.id} product={p} />)}
@@ -496,7 +496,7 @@ export default function ProductDetailPage() {
 
         {/* Product Bundles */}
         {productBundles.length > 0 && (
-          <section className="mt-16 border-t border-gray-800/50 pt-8">
+          <section className="mt-16 border-t border-gray-200 dark:border-gray-800/50 pt-8">
             <h2 className="text-2xl font-bold mb-4">{locale === 'fa' ? 'این محصول در پکیج زیر موجوده' : 'This product is part of a bundle'}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {productBundles.map((b: any) => {

@@ -198,22 +198,22 @@ export default function HeroSlider() {
                 </div>
               </div>
 
-              <div className="absolute top-8 -start-4 bg-gray-900/80 backdrop-blur border border-gold/20 rounded-xl px-4 py-3 animate-float">
+              <div className="floating-badge absolute top-8 -start-4 backdrop-blur rounded-xl px-4 py-3 animate-float">
                 <div className="flex items-center gap-2">
                   <HiOutlineShieldCheck className="w-5 h-5 text-gold" />
-                  <span className="text-sm text-gray-600 dark:text-gray-300">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
+                  <span className="text-sm">{locale === 'fa' ? 'ضمانت اصالت' : 'Authentic'}</span>
                 </div>
               </div>
-              <div className="absolute bottom-12 -end-4 bg-gray-900/80 backdrop-blur border border-gold/20 rounded-xl px-4 py-3 animate-float-reverse">
+              <div className="floating-badge absolute bottom-12 -end-4 backdrop-blur rounded-xl px-4 py-3 animate-float-reverse">
                 <div className="flex items-center gap-2">
                   <HiOutlineTruck className="w-5 h-5 text-gold" />
-                  <span className="text-sm text-gray-600 dark:text-gray-300">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
+                  <span className="text-sm">{locale === 'fa' ? 'ارسال سریع' : 'Fast Delivery'}</span>
                 </div>
               </div>
-              <div className="absolute top-1/2 -end-8 bg-gray-900/80 backdrop-blur border border-gold/20 rounded-xl px-4 py-3 animate-float" style={{ animationDelay: '2s' }}>
+              <div className="floating-badge absolute top-1/2 -end-8 backdrop-blur rounded-xl px-4 py-3 animate-float" style={{ animationDelay: '2s' }}>
                 <div className="flex items-center gap-2">
                   <HiOutlineRefresh className="w-5 h-5 text-gold" />
-                  <span className="text-sm text-gray-600 dark:text-gray-300">{locale === 'fa' ? 'بازگشت آسان' : 'Easy Return'}</span>
+                  <span className="text-sm">{locale === 'fa' ? 'بازگشت آسان' : 'Easy Return'}</span>
                 </div>
               </div>
             </div>

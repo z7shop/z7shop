@@ -123,7 +123,7 @@ export default function AboutPage() {
         <section className="relative -mt-10 z-10 max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((s, i) => (
-              <div key={i} className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 md:p-6 text-center hover:border-gold/20 transition-all duration-300 group">
+              <div key={i} className="surface-card backdrop-blur-sm rounded-2xl p-5 md:p-6 text-center hover:border-gold/20 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                   <s.icon className="w-5 h-5 text-gold" />
                 </div>
@@ -146,7 +146,7 @@ export default function AboutPage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {values.map((v, i) => (
-              <div key={i} className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8 hover:border-gold/20 transition-all duration-300 overflow-hidden">
+              <div key={i} className="group relative surface-card rounded-2xl p-6 md:p-8 hover:border-gold/20 transition-all duration-300 overflow-hidden">
                 <div className={`absolute top-0 end-0 w-32 h-32 bg-gradient-to-br ${v.color} rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <div className="relative">
                   <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
@@ -177,7 +177,7 @@ export default function AboutPage() {
               <div className="space-y-10 md:space-y-14">
                 {timeline.map((t, i) => (
                   <div key={i} className={`relative flex items-start gap-6 md:gap-0 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                    <div className="absolute start-6 md:start-1/2 w-3 h-3 rounded-full bg-gold border-4 border-[#0c0c0f] -translate-x-1.5 md:-translate-x-1.5 mt-1.5 z-10" />
+                    <div className="absolute start-6 md:start-1/2 w-3 h-3 rounded-full bg-gold border-4 border-gray-100 dark:border-[#0c0c0f] -translate-x-1.5 md:-translate-x-1.5 mt-1.5 z-10" />
                     <div className={`flex-1 ps-12 md:ps-0 ${i % 2 === 0 ? 'md:pe-16 md:text-end' : 'md:ps-16 md:text-start'}`}>
                       <span className="inline-block text-xs font-bold text-gold bg-gold/10 px-3 py-1 rounded-full mb-2">{t.year}</span>
                       <h3 className="font-bold text-base md:text-lg mb-1">{t.title}</h3>
@@ -203,7 +203,7 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {team.map((m, i) => (
-              <div key={i} className="group bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 text-center hover:border-gold/20 transition-all duration-300">
+              <div key={i} className="group surface-card rounded-2xl p-6 text-center hover:border-gold/20 transition-all duration-300">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center mx-auto mb-4 border-2 border-gold/20 group-hover:border-gold/40 transition-colors">
                   <span className="text-xl font-bold text-gold">{m.initials}</span>
                 </div>
@@ -216,7 +216,7 @@ export default function AboutPage() {
 
         {/* Story */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-20">
-          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12">
+          <div className="surface-card rounded-2xl p-8 md:p-12">
             <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3">
               <HiOutlineCheckCircle className="w-6 h-6 text-gold" />
               {fa ? 'داستان ما' : 'Our Story'}

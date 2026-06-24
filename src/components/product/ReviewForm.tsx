@@ -46,7 +46,7 @@ export default function ReviewForm({ productId, onSubmit }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-5 rounded-xl bg-gray-800/30 border border-gray-700/30 space-y-4">
+    <form onSubmit={handleSubmit} className="surface-card p-5 rounded-xl space-y-4">
       <h3 className="font-bold text-sm">
         {locale === 'fa' ? 'ثبت نظر شما' : 'Write a Review'}
       </h3>
