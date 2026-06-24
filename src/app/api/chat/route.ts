@@ -43,15 +43,22 @@ export async function POST(req: NextRequest) {
   }
 
   if (body.action === 'send_message') {
-    const { session_id, message, image } = body;
+    const { session_id, message, image, sender } = body;
     const chatSession = await dbGet('SELECT * FROM chat_sessions WHERE id = ?', session_id);
     if (!chatSession) return NextResponse.json({ error: 'Session not found' }, { status: 404 });
 
+    const msgSender = sender === 'bot' ? 'bot' : sender === 'system' ? 'system' : 'user';
     const msgId = uuidv4();
-    await dbRun('INSERT INTO chat_messages (id, session_id, sender, message, image) VALUES (?, ?, ?, ?, ?)', msgId, session_id, 'user', message || '', image || '');
+    await dbRun('INSERT INTO chat_messages (id, session_id, sender, message, image) VALUES (?, ?, ?, ?, ?)', msgId, session_id, msgSender, message || '', image || '');
     await dbRun("UPDATE chat_sessions SET updated_at = datetime('now') WHERE id = ?", session_id);
 
     return NextResponse.json({ id: msgId });
+  }
+
+  if (body.action === 'close_session') {
+    const { session_id } = body;
+    await dbRun("UPDATE chat_sessions SET status = 'closed', updated_at = datetime('now') WHERE id = ?", session_id);
+    return NextResponse.json({ success: true });
   }
 
   if (body.action === 'request_admin') {

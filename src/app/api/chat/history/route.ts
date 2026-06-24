@@ -14,7 +14,7 @@ export async function GET() {
   const userId = (session.user as any).id;
 
   const closedSessions = await dbAll(
-    "SELECT * FROM chat_sessions WHERE user_id = ? AND status = 'closed' ORDER BY updated_at DESC LIMIT 20", userId
+    "SELECT * FROM chat_sessions WHERE user_id = ? ORDER BY updated_at DESC LIMIT 20", userId
   );
 
   const result = [];

@@ -52,19 +52,50 @@ export default function SupportButton() {
     setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
   };
 
-  const addBotMsg = (text: string) => {
+  const ensureSession = useCallback(async (): Promise<string | null> => {
+    if (sessionId) return sessionId;
+    if (!session) return null;
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'create_session' }),
+      });
+      const data = await res.json();
+      if (data.session_id) {
+        setSessionId(data.session_id);
+        return data.session_id;
+      }
+    } catch {}
+    return null;
+  }, [session, sessionId]);
+
+  const saveMsg = useCallback(async (sid: string, message: string, sender: 'user' | 'bot' | 'system') => {
+    try {
+      await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'send_message', session_id: sid, message, sender }),
+      });
+    } catch {}
+  }, []);
+
+  const addBotMsg = useCallback(async (text: string, sid?: string | null) => {
     setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'bot', message: text }]);
     scrollBottom();
-  };
+    if (sid) await saveMsg(sid, text, 'bot');
+  }, [saveMsg]);
 
-  const handleOpen = () => {
+  const handleOpen = async () => {
     setOpen(true);
     if (messages.length === 0) {
-      addBotMsg(locale === 'fa' ? 'سلام! چطور می‌تونم کمکتون کنم؟ یکی از سوالات زیر رو انتخاب کنید یا سوالتون رو بنویسید.' : 'Hi! How can I help? Select a question below or type your own.');
+      const sid = await ensureSession();
+      const greeting = locale === 'fa' ? 'سلام! چطور می‌تونم کمکتون کنم؟ یکی از سوالات زیر رو انتخاب کنید یا سوالتون رو بنویسید.' : 'Hi! How can I help? Select a question below or type your own.';
+      await addBotMsg(greeting, sid);
     }
   };
 
-  const handleFaq = (index: number) => {
+  const handleFaq = async (index: number) => {
     const faq = FAQ[index];
     const q = locale === 'fa' ? faq.q : faq.q_en;
     const a = locale === 'fa' ? faq.a : faq.a_en;
@@ -74,22 +105,18 @@ export default function SupportButton() {
       { id: `a-${Date.now()}`, sender: 'bot', message: a },
     ]);
     scrollBottom();
+    const sid = sessionId || await ensureSession();
+    if (sid) {
+      await saveMsg(sid, q, 'user');
+      await saveMsg(sid, a, 'bot');
+    }
   };
 
   const requestAdmin = async () => {
     if (!session) return;
 
-    let sid = sessionId;
-    if (!sid) {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'create_session' }),
-      });
-      const data = await res.json();
-      sid = data.session_id;
-      setSessionId(sid);
-    }
+    const sid = sessionId || await ensureSession();
+    if (!sid) return;
 
     await fetch('/api/chat', {
       method: 'POST',
@@ -99,8 +126,9 @@ export default function SupportButton() {
 
     setChatStatus('waiting');
     setShowFaq(false);
-    addBotMsg(locale === 'fa' ? 'در حال ارتباط با پشتیبان... لطفاً منتظر بمانید.' : 'Connecting to support... Please wait.');
-    startPolling(sid!);
+    const msg = locale === 'fa' ? 'در حال ارتباط با پشتیبان... لطفاً منتظر بمانید.' : 'Connecting to support... Please wait.';
+    await addBotMsg(msg, sid);
+    startPolling(sid);
   };
 
   const startPolling = (sid: string) => {
@@ -142,6 +170,17 @@ export default function SupportButton() {
       } catch {}
     }, 3000);
   };
+
+  const closeSession = useCallback(async () => {
+    if (!sessionId) return;
+    try {
+      await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'close_session', session_id: sessionId }),
+      });
+    } catch {}
+  }, [sessionId]);
 
   useEffect(() => {
     return () => {
@@ -206,26 +245,25 @@ export default function SupportButton() {
     setInput('');
     sendTypingStatus(false);
 
-    if (chatStatus === 'bot' && !sessionId) {
-      setMessages(prev => [...prev, { id: `u-${Date.now()}`, sender: 'user', message: text }]);
-      scrollBottom();
-      setTimeout(() => {
-        addBotMsg(locale === 'fa'
+    setMessages(prev => [...prev, { id: `u-${Date.now()}`, sender: 'user', message: text }]);
+    scrollBottom();
+
+    const sid = sessionId || await ensureSession();
+
+    if (chatStatus === 'bot') {
+      if (sid) await saveMsg(sid, text, 'user');
+      setTimeout(async () => {
+        const reply = locale === 'fa'
           ? 'متأسفانه پاسخ خودکاری برای سوال شما ندارم. می‌تونید با پشتیبان ارتباط برقرار کنید.'
-          : "I don't have an automatic answer. You can connect to support.");
+          : "I don't have an automatic answer. You can connect to support.";
+        await addBotMsg(reply, sid);
         setShowFaq(false);
       }, 500);
       return;
     }
 
-    if (sessionId && (chatStatus === 'active' || chatStatus === 'waiting')) {
-      await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'send_message', session_id: sessionId, message: text }),
-      });
-      setMessages(prev => [...prev, { id: `u-${Date.now()}`, sender: 'user', message: text }]);
-      scrollBottom();
+    if (sid && (chatStatus === 'active' || chatStatus === 'waiting')) {
+      await saveMsg(sid, text, 'user');
     }
   };
 
@@ -281,7 +319,15 @@ export default function SupportButton() {
                     <HiOutlineClock className="w-4 h-4" />
                   </button>
                 )}
-                <button onClick={() => setOpen(false)} className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400">
+                <button onClick={async () => {
+                  if (sessionId && chatStatus === 'bot') {
+                    await closeSession();
+                    setSessionId(null);
+                    setMessages([]);
+                    setShowFaq(true);
+                  }
+                  setOpen(false);
+                }} className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400">
                   <HiOutlineX className="w-5 h-5" />
                 </button>
               </div>
@@ -301,7 +347,20 @@ export default function SupportButton() {
                       onClick={() => setExpandedHistory(expandedHistory === h.id ? null : h.id)}
                       className="w-full px-3 py-2.5 flex items-center justify-between hover:bg-white/[0.03] transition-colors"
                     >
-                      <span className="text-xs text-gray-600 dark:text-gray-400">{formatDate(h.updated_at)}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-600 dark:text-gray-400">{formatDate(h.updated_at)}</span>
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${
+                          (h as any).status === 'closed' ? 'bg-gray-600/20 text-gray-500' :
+                          (h as any).status === 'active' ? 'bg-green-500/20 text-green-400' :
+                          (h as any).status === 'waiting' ? 'bg-yellow-500/20 text-yellow-400' :
+                          'bg-blue-500/20 text-blue-400'
+                        }`}>
+                          {(h as any).status === 'closed' ? (locale === 'fa' ? 'بسته' : 'Closed') :
+                           (h as any).status === 'active' ? (locale === 'fa' ? 'فعال' : 'Active') :
+                           (h as any).status === 'waiting' ? (locale === 'fa' ? 'انتظار' : 'Waiting') :
+                           (locale === 'fa' ? 'ربات' : 'Bot')}
+                        </span>
+                      </div>
                       <span className="text-[10px] text-gray-500">{h.messages.length} {locale === 'fa' ? 'پیام' : 'msgs'}</span>
                     </button>
                     {expandedHistory === h.id && (
@@ -441,7 +500,19 @@ export default function SupportButton() {
 
       {/* Float Button */}
       <button
-        onClick={() => open ? setOpen(false) : handleOpen()}
+        onClick={async () => {
+          if (open) {
+            if (sessionId && chatStatus === 'bot') {
+              await closeSession();
+              setSessionId(null);
+              setMessages([]);
+              setShowFaq(true);
+            }
+            setOpen(false);
+          } else {
+            handleOpen();
+          }
+        }}
         aria-label={locale === 'fa' ? 'پشتیبانی' : 'Support'}
         className={`w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
           open ? 'bg-gray-800' : 'bg-gradient-to-r from-gold to-gold-light hover:shadow-gold/40 pulse-gold'
