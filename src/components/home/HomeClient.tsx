@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
@@ -38,6 +38,173 @@ function SectionHeader({ title, subtitle, center = false }: { title: string; sub
       </div>
       <p className={`text-xs md:text-sm text-gray-500 ${center ? '' : 'ms-9 md:ms-[52px]'}`}>{subtitle}</p>
     </div>
+  );
+}
+
+function CategoriesSlider({ categories, locale, dir, ArrowIcon }: { categories: Category[]; locale: string; dir: string; ArrowIcon: React.ElementType }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval>>();
+
+  const scrollToIndex = useCallback((index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cards = container.querySelectorAll<HTMLElement>('[data-cat-card]');
+    if (cards[index]) {
+      const card = cards[index];
+      const containerRect = container.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const scrollPos = card.offsetLeft - containerRect.width / 2 + cardRect.width / 2;
+      container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
+  }, []);
+
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => {
+      setActiveIndex(prev => {
+        const next = (prev + 1) % categories.length;
+        scrollToIndex(next);
+        return next;
+      });
+    }, 3000);
+  }, [categories.length, scrollToIndex]);
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => { if (autoPlayRef.current) clearInterval(autoPlayRef.current); };
+  }, [startAutoPlay]);
+
+  const handleScroll = () => {
+    const container = scrollRef.current;
+    if (!container || isDragging) return;
+    const cards = container.querySelectorAll<HTMLElement>('[data-cat-card]');
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    cards.forEach((card, i) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(containerCenter - cardCenter);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    setActiveIndex(closest);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollRef.current?.scrollLeft || 0);
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollRef.current.offsetLeft || 0);
+    const walk = (x - startX) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    startAutoPlay();
+  };
+
+  const handleTouchStart = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleTouchEnd = () => {
+    startAutoPlay();
+  };
+
+  const goTo = (index: number) => {
+    setActiveIndex(index);
+    scrollToIndex(index);
+    startAutoPlay();
+  };
+
+  return (
+    <section className="py-10 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <ScrollReveal direction="up">
+          <SectionHeader
+            title={locale === 'fa' ? 'دسته‌بندی‌ها' : 'Categories'}
+            subtitle={locale === 'fa' ? 'از دسته‌بندی مورد نظر خود محصول انتخاب کنید' : 'Browse products by category'}
+            center
+          />
+        </ScrollReveal>
+      </div>
+
+      <div className="mt-8 md:mt-12">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide px-4 md:px-[calc(50vw-560px)] snap-x snap-mandatory"
+          style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+        >
+          {categories.map((cat, i) => (
+            <Link
+              key={cat.id}
+              href={`/products?category=${cat.id}`}
+              data-cat-card
+              onClick={(e) => { if (isDragging) e.preventDefault(); }}
+              className={`group relative flex-shrink-0 w-[200px] md:w-[240px] snap-center transition-all duration-500 ${
+                activeIndex === i ? 'scale-105' : 'scale-95 opacity-70'
+              }`}
+            >
+              <div className="relative overflow-hidden rounded-3xl aspect-[3/4] shadow-xl">
+                <Image
+                  src={cat.image}
+                  alt={locale === 'fa' ? cat.name_fa : cat.name_en}
+                  fill
+                  sizes="240px"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500" />
+                <div className={`absolute inset-0 rounded-3xl transition-all duration-500 ${
+                  activeIndex === i ? 'ring-2 ring-gold/50 shadow-[0_0_30px_rgba(201,168,76,0.15)]' : ''
+                }`} />
+                <div className="absolute bottom-0 start-0 end-0 p-5">
+                  <span className="font-bold text-lg text-white group-hover:text-gold transition-colors duration-300 block">
+                    {locale === 'fa' ? cat.name_fa : cat.name_en}
+                  </span>
+                  <span className="text-xs text-gray-400 mt-1.5 flex items-center gap-1.5 group-hover:text-gray-300 transition-colors">
+                    {locale === 'fa' ? 'مشاهده محصولات' : 'View Products'}
+                    <ArrowIcon className="w-3 h-3 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform duration-300" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-6">
+          {categories.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${
+                activeIndex === i
+                  ? 'w-8 h-2.5 bg-gold'
+                  : 'w-2.5 h-2.5 bg-gray-600 hover:bg-gray-400'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -212,47 +379,8 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-20">
-          <ScrollReveal direction="up">
-            <SectionHeader
-              title={dict.categories.title}
-              subtitle={locale === 'fa' ? 'از دسته‌بندی مورد نظر خود محصول انتخاب کنید' : 'Browse products by category'}
-              center
-            />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-8 md:mt-12">
-              {categories.map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={`/products?category=${cat.id}`}
-                  className="group relative overflow-hidden rounded-2xl aspect-[4/5]"
-                >
-                  <Image
-                    src={cat.image}
-                    alt={locale === 'fa' ? cat.name_fa : cat.name_en}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/5 group-hover:from-black/90 transition-all duration-500" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-transparent" />
-                  </div>
-                  <div className="absolute bottom-0 start-0 end-0 p-4 md:p-6">
-                    <span className="font-bold text-base md:text-xl text-white group-hover:text-gold transition-colors duration-300 block">
-                      {locale === 'fa' ? cat.name_fa : cat.name_en}
-                    </span>
-                    <span className="text-[11px] md:text-xs text-gray-400 mt-1 flex items-center gap-1.5 group-hover:text-gray-300 transition-colors">
-                      {locale === 'fa' ? 'مشاهده محصولات' : 'View Products'}
-                      <ArrowIcon className="w-3 h-3 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform duration-300" />
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/40 rounded-2xl transition-all duration-500" />
-                </Link>
-              ))}
-            </div>
-          </ScrollReveal>
-        </section>
+        {/* Categories Slider */}
+        <CategoriesSlider categories={categories} locale={locale} dir={dir} ArrowIcon={ArrowIcon} />
 
         {/* Featured Products */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-16">
