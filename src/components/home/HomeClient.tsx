@@ -158,20 +158,57 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
 
         {/* Features Strip */}
         <section className="relative border-b border-gray-200 dark:border-gray-800/30 bg-gray-50 dark:bg-[#0d0d10]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex overflow-x-auto scrollbar-hide md:grid md:grid-cols-4 gap-2 md:gap-4 -mx-4 px-4 md:mx-0 md:px-0 py-4 md:py-6">
+          {/* Desktop: grid */}
+          <div className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-4 gap-4 py-6">
               {features.map((f, i) => (
-                <div key={i} className="group glass-card rounded-xl md:rounded-2xl flex items-center gap-3 md:gap-4 py-4 md:py-5 px-4 md:px-5 hover:border-gold/20 transition-all duration-300 min-w-[180px] md:min-w-0">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
-                    <f.icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
+                <div key={i} className="group glass-card rounded-2xl flex items-center gap-4 py-5 px-5 hover:border-gold/20 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
+                    <f.icon className="w-6 h-6 text-gold" />
                   </div>
                   <div className="min-w-0 relative z-10">
-                    <p className="font-bold text-xs md:text-sm whitespace-nowrap text-gray-900 dark:text-white">{f.title}</p>
-                    <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-500 mt-0.5 whitespace-nowrap">{f.desc}</p>
+                    <p className="font-bold text-sm whitespace-nowrap text-gray-900 dark:text-white">{f.title}</p>
+                    <p className="text-xs text-gray-500 mt-0.5 whitespace-nowrap">{f.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+          {/* Mobile: auto-sliding marquee */}
+          <div className="md:hidden features-marquee-container py-4">
+            <div className="features-marquee-track">
+              {[...features, ...features].map((f, i) => (
+                <div key={i} className="group glass-card rounded-xl flex items-center gap-3 py-4 px-4 hover:border-gold/20 transition-all duration-300 flex-shrink-0 mx-1.5">
+                  <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
+                    <f.icon className="w-5 h-5 text-gold" />
+                  </div>
+                  <div className="min-w-0 relative z-10">
+                    <p className="font-bold text-xs whitespace-nowrap text-gray-900 dark:text-white">{f.title}</p>
+                    <p className="text-[10px] text-gray-500 mt-0.5 whitespace-nowrap">{f.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <style jsx>{`
+              .features-marquee-container {
+                overflow: hidden;
+                -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+                mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+              }
+              .features-marquee-track {
+                display: flex;
+                animation: features-scroll 20s linear infinite;
+                width: max-content;
+              }
+              @keyframes features-scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .features-marquee-container:hover .features-marquee-track,
+              .features-marquee-container:active .features-marquee-track {
+                animation-play-state: paused;
+              }
+            `}</style>
           </div>
         </section>
 
