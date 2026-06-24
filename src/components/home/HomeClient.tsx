@@ -283,12 +283,13 @@ export default function HomeClient({ initialFeatured, initialNewArrivals, initia
         {/* New Arrivals */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-20">
           <ScrollReveal direction="up">
-            <div className="flex items-end justify-between mb-6 md:mb-10">
-              <SectionHeader
-                title={dict.newArrivals.title}
-                subtitle={locale === 'fa' ? 'تازه‌ترین محصولات فروشگاه' : 'Latest additions to our store'}
-              />
-              <Link href="/products?new=true" className="btn-ghost group text-xs md:text-sm flex-shrink-0">
+            <SectionHeader
+              title={dict.newArrivals.title}
+              subtitle={locale === 'fa' ? 'تازه‌ترین محصولات فروشگاه' : 'Latest additions to our store'}
+              center
+            />
+            <div className="flex justify-center mt-4 mb-6 md:mb-10">
+              <Link href="/products?new=true" className="btn-ghost group text-xs md:text-sm">
                 {dict.featured.viewAll}
                 <ArrowIcon className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
               </Link>
